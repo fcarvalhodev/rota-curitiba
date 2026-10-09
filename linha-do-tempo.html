@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Linha do tempo · Curitiba</title>
+<meta name="description" content="Cronologia dos processos de Lula, do mensalão ao segundo turno de 2026, com fontes e etiquetas de comprovação.">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&family=Spline+Sans+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+<style>
+:root{--c-lula:#c0392b;--c-lava:#1f5bb5;--c-stf:#7a2a3d;--c-pt:#56625a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--c-lula:#f2796c;--c-lava:#78a8f2;--c-stf:#e0899c;--c-pt:#9aa89f}}
+:root[data-theme="dark"]{--c-lula:#f2796c;--c-lava:#78a8f2;--c-stf:#e0899c;--c-pt:#9aa89f}
+.hero{padding-block:32px 8px;display:grid;gap:18px}
+h1{font-size:clamp(54px,13vw,112px)}
+.filters{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-block:10px;margin-top:20px}
+.filters .wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filters .lbl{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-right:4px}
+.chip{font-family:var(--ui);font-size:14px;font-weight:600;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:5px 12px 5px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.chip i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.chip[aria-pressed="true"]{border-color:var(--c);background:color-mix(in srgb,var(--c) 14%,var(--paper))}
+.chip:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+</style>
+</head><body>
+<style>/* barra comum das Rotas */.rotas-bar{border-bottom:1px solid var(--line);background:var(--bg);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}.rotas-bar>div{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}.rotas-bar a{color:var(--muted);text-decoration:none;padding-block:2px;border-bottom:2px solid transparent}.rotas-bar a:hover{color:var(--ink)}.rotas-bar a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}.rotas-bar .rb-home{color:var(--accent);font-weight:600}.rotas-bar a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}</style><nav class="rotas-bar" aria-label="Rotas"><div><a class="rb-home" href="https://fcarvalhodev.github.io/rotas/">Rotas</a><a href="https://fcarvalhodev.github.io/rota-washington/">Washington</a><a href="https://fcarvalhodev.github.io/rota-master/">Master</a><a href="https://fcarvalhodev.github.io/rota-curitiba/" aria-current="page">Curitiba</a></div></nav>
+
+<header class="wrap hero">
+  <a class="back" href="./">← Rota Curitiba</a>
+  <div class="kicker">Cronologia · 2012–2026</div>
+  <h1>Linha do<br>tempo</h1>
+  <p class="lede">Os marcos dos processos de Lula, do mensalão ao segundo turno de 2026. Os marcos com barra lateral são os de maior peso. A história do Lulinha está em <a href="lulinha.html">página própria</a>.</p>
+  <div class="legend">
+    <span><b class="ev doc">Documentado</b> decisão, registro ou declaração pública</span>
+    <span><b class="ev open">Em aberto</b> investigação em curso, sem conclusão</span>
+  </div>
+</header>
+<nav class="filters" aria-label="Filtrar por envolvido"><div class="wrap" id="chips"><span class="lbl">Filtrar</span></div></nav>
+<main class="wrap">
+  <section class="sec" aria-label="Linha do tempo" style="padding-top:12px">
+    <div class="tl" id="tl"><div class="rail" aria-hidden="true"><b id="railfill"></b></div></div>
+    <p class="empty" id="empty" hidden>Nenhum evento para esse filtro.</p>
+  </section>
+  <footer>
+    <p>Fatos reunidos a partir de reportagens publicadas até 9 de outubro de 2026. Investigação não é condenação, e anulação não é absolvição no mérito.</p>
+    <p><a class="back" href="./">← Voltar para a Rota Curitiba</a></p>
+  </footer>
+</main>
+<script>
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const A={lula:["Lula","var(--c-lula)"],lava:["Lava Jato e Moro","var(--c-lava)"],stf:["STF","var(--c-stf)"],pt:["Outros do PT","var(--c-pt)"]};
+const E=[
+ {y:2012,d:"10 out",a:["pt","stf"],ev:"doc",t:"STF condena Dirceu, Genoino e Delúbio no mensalão",b:"Os três são condenados por corrupção ativa. Lula não foi denunciado nesse caso.",s:[["Congresso em Foco","https://www.congressoemfoco.com.br/noticia/67766/stf-dirceu-genoino-e-delubio-condenados-por-corrupcao"]]},
+ {y:2015,d:"22 abr",a:["pt"],ev:"doc",t:"Petrobras reconhece R$ 6,2 bilhões em perdas com corrupção",b:"O valor aparece no balanço auditado de 2014, como custos desviados apurados pela Lava Jato.",s:[["Congresso em Foco","https://www.congressoemfoco.com.br/noticias/petrobras-perde-r-62-bilhoes-com-corrupcao/"]]},
+ {y:2016,d:"mar",a:["lula","lava"],ev:"doc",t:"Condução coercitiva de Lula para depor",b:"Em 2022, o Comitê de Direitos Humanos da ONU concluiu que o mandado violou a lei brasileira.",s:[["Poder360","https://www.poder360.com.br/justica/onu-conclui-que-moro-foi-parcial-no-julgamento-de-lula/"]]},
+ {y:2017,d:"12 jul",k:1,a:["lula","lava"],ev:"doc",t:"Moro condena Lula no caso do triplex",b:"Pena de 9 anos e 6 meses por corrupção passiva e lavagem. Moro o absolve da acusação sobre o armazenamento do acervo presidencial.",s:[["Folha Vitória","https://www.folhavitoria.com.br/politica/entenda-o-caso-triplex-em-que-lula-foi-condenado/"]]},
+ {y:2018,d:"24 jan",a:["lula","lava"],ev:"doc",t:"TRF-4 confirma e aumenta a pena para 12 anos e 1 mês",b:"Com a condenação em segunda instância, abre-se caminho para a prisão, permitida à época.",s:[["Poder360","https://www.poder360.com.br/governo/da-prisao-ao-planalto-lula-era-preso-ha-exatos-5-anos"]]},
+ {y:2018,d:"7 abr",k:1,a:["lula","lava"],ev:"doc",t:"Lula é preso na PF em Curitiba",b:"Aos 72 anos, começa a cumprir a pena em regime fechado. A candidatura de 2018 é barrada, o que a ONU depois considerou arbitrário.",s:[["Poder360","https://www.poder360.com.br/governo/da-prisao-ao-planalto-lula-era-preso-ha-exatos-5-anos"]]},
+ {y:2018,d:"2018",a:["lula"],ev:"doc",t:"Absolvido no caso do silêncio de Cerveró",b:"A primeira absolvição no mérito, por insuficiência de provas.",s:[["CNN Brasil","https://www.cnnbrasil.com.br/politica/fatos-primeiro-livre-para-disputar-a-eleicao-lula-nao-foi-inocentado-de-todas-as-acusacoes/"]]},
+ {y:2019,d:"fev",a:["lula","lava"],ev:"doc",t:"Segunda condenação, no caso do sítio de Atibaia",b:"A juíza Gabriela Hardt aplica 12 anos e 11 meses. O TRF-4 depois aumenta para 17 anos.",s:[["Poder360","https://www.poder360.com.br/governo/da-prisao-ao-planalto-lula-era-preso-ha-exatos-5-anos"]]},
+ {y:2019,d:"23 abr",a:["lula"],ev:"doc",t:"STJ mantém a condenação do triplex e reduz a pena",b:"A 5ª Turma, por unanimidade, reduz a pena para 8 anos e 10 meses e rejeita os recursos da defesa.",s:[["Agência Brasil","https://agenciabrasil.ebc.com.br/justica/noticia/2019-04/maioria-do-stj-decide-reduzir-pena-do-ex-presidente-lula"]]},
+ {y:2019,d:"9 jun",k:1,a:["lava"],ev:"doc",t:"Vaza Jato: as mensagens de Moro e Dallagnol",b:"O Intercept mostra conversas em que o juiz orienta a acusação e o procurador demonstra receio sobre as provas antes da denúncia do triplex. Moro diz que não há nada de irregular.",s:[["Intercept","https://www.intercept.com.br/?p=286347"],["Migalhas","https://www.migalhas.com.br/Quentes/17,MI304061,91041-Nao+tem+nada+ali+diz+Moro+sobre+vazamento+de+mensagens"]]},
+ {y:2019,d:"8 nov",k:1,a:["lula","stf"],ev:"doc",t:"Lula é solto depois de 580 dias",b:"O STF decide que a pena só pode ser cumprida depois do trânsito em julgado.",s:[["Poder360","https://www.poder360.com.br/governo/da-prisao-ao-planalto-lula-era-preso-ha-exatos-5-anos"]]},
+ {y:2019,d:"4 dez",a:["lula"],ev:"doc",t:"Absolvido no caso do \"quadrilhão do PT\"",b:"A Justiça Federal do DF conclui que o fato narrado não era crime.",s:[["Poder360","https://www.poder360.com.br/justica/lula-diz-que-foi-absolvido-mas-segue-com-problemas-na-justica/"]]},
+ {y:2021,d:"8 mar",k:1,a:["stf","lula"],ev:"doc",t:"Fachin anula as condenações de Curitiba",b:"A vara de Moro não tinha competência para julgar Lula. As quatro ações de lá são anuladas, e Lula recupera os direitos políticos.",s:[["Poder360","https://www.poder360.com.br/governo/da-prisao-ao-planalto-lula-era-preso-ha-exatos-5-anos"]]},
+ {y:2021,d:"mar–jun",k:1,a:["stf","lava"],ev:"doc",t:"STF declara Moro parcial",b:"A 2ª Turma decide por 3 a 2. Em 23 de junho, o plenário mantém a decisão por 7 a 4.",s:[["Migalhas","https://www.migalhas.com.br/quentes/347494/stf-moro-foi-parcial-ao-condenar-lula"]]},
+ {y:2021,d:"ago",a:["lula"],ev:"doc",t:"Justiça do DF rejeita a nova denúncia do sítio",b:"Por prescrição e falta de provas para reabrir o caso.",s:[["Aos Fatos","https://www.aosfatos.org/noticias/o-que-e-falso-e-o-que-e-fato-em-declaracoes-de-lula-sobre-absolvicoes-na-onu-e-na-justica/"]]},
+ {y:2022,d:"jan",a:["lula"],ev:"doc",t:"Triplex é arquivado por prescrição em Brasília",b:"O caso não volta a ser julgado no mérito.",s:[["CNN Brasil","https://www.cnnbrasil.com.br/politica/fatos-primeiro-livre-para-disputar-a-eleicao-lula-nao-foi-inocentado-de-todas-as-acusacoes/"]]},
+ {y:2022,d:"28 abr",k:1,a:["lula","lava"],ev:"doc",t:"Comitê da ONU conclui que Moro foi parcial",b:"Violações ao juiz imparcial, à presunção de inocência, à privacidade e aos direitos políticos. O comitê não julgou o mérito.",s:[["Poder360","https://www.poder360.com.br/justica/onu-conclui-que-moro-foi-parcial-no-julgamento-de-lula/"]]},
+ {y:2023,d:"1º jan",k:1,a:["lula"],ev:"doc",t:"Lula toma posse para o terceiro mandato",b:"Menos de quatro anos depois de deixar a prisão.",s:[["Poder360","https://www.poder360.com.br/governo/da-prisao-ao-planalto-lula-era-preso-ha-exatos-5-anos"]]},
+ {y:2023,d:"6 set",k:1,a:["stf","lava"],ev:"doc",t:"Toffoli anula as provas do acordo da Odebrecht",b:"Ele declara as provas imprestáveis e chama a prisão de Lula de um dos maiores erros judiciários do país. A confissão de propina que a Odebrecht fez em 2016 continua de pé; o que caiu foi o uso das provas nos processos.",s:[["Diário do Nordeste","https://diariodonordeste.verdesmares.com.br/pontopoder/toffoli-anula-provas-da-odebrecht-e-diz-que-prisao-de-lula-na-lava-jato-foi-armacao-1.3414327"],["Revista Oeste","https://www.revistaoeste.com/politica/odebrecht-confessou-crimes-que-foram-anulados-por-toffoli/"]]},
+ {y:2024,d:"4 dez",a:["lula"],ev:"doc",t:"Lula recebe Daniel Vorcaro no Planalto",b:"O encontro foi fora da agenda. Não há investigação contra Lula.",s:[["Revista Oeste","https://revistaoeste.com/politica/lula-recebeu-uisque-de-presente-de-vorcaro/"]],l:["Ver na Rota Master","https://fcarvalhodev.github.io/rota-master/"]},
+ {y:2026,d:"4 out",a:["lula"],ev:"doc",t:"Primeiro turno: Flávio 47,03%, Lula 45,16%",b:"Os dois disputam o segundo turno em 25 de outubro.",s:[["Portal de Prefeitura","https://portaldeprefeitura.com.br/bastidores-da-politica/eleicoes-2026-com-100-das-secoes-totalizadas-flavio-tem-4703-e/633498/"]]}
+];
+const EVL={doc:"Documentado",alleg:"Alegação",open:"Em aberto"};
+const tl=document.getElementById("tl");let lastY=null;
+E.forEach(e=>{
+  if(e.y!==lastY){const y=document.createElement("div");y.className="year";y.textContent=e.y;y.dataset.year=e.y;tl.appendChild(y);lastY=e.y}
+  const el=document.createElement("article");el.className="item"+(e.k?" key":"");el.dataset.a=e.a.join(" ");el.dataset.y=e.y;
+  el.innerHTML=`<div class="date">${e.d}<br>${e.y}</div><span class="dot" aria-hidden="true"></span><div class="card"><div class="top"><div class="actors">${e.a.map(k=>`<span class="actor" style="--c:${A[k][1]}">${A[k][0]}</span>`).join("")}</div><span class="ev ${e.ev}">${EVL[e.ev]}</span></div><h3>${esc(e.t)}</h3><p>${esc(e.b)}</p><div class="src">${e.s.map(s=>`<a href="${s[1]}" target="_blank" rel="noopener">${s[0]}</a>`).join("")}</div>${e.l?`<a class="more" href="${e.l[1]}">${e.l[0]} →</a>`:""}</div>`;
+  tl.appendChild(el);
+});
+const chips=document.getElementById("chips"),active=new Set();
+Object.entries(A).forEach(([k,[n,c]])=>{const b=document.createElement("button");b.type="button";b.className="chip";b.id="f-"+k;b.style.setProperty("--c",c);b.setAttribute("aria-pressed","false");b.innerHTML=`<i></i>${n}`;b.onclick=()=>{active.has(k)?active.delete(k):active.add(k);b.setAttribute("aria-pressed",active.has(k));apply()};chips.appendChild(b)});
+function apply(){let shown=0;const ys={};tl.querySelectorAll(".item").forEach(it=>{const ok=!active.size||it.dataset.a.split(" ").some(a=>active.has(a));it.hidden=!ok;if(ok){shown++;ys[it.dataset.y]=1}});tl.querySelectorAll(".year").forEach(y=>y.hidden=!ys[y.dataset.year]);document.getElementById("empty").hidden=shown>0;rail()}
+const fill=document.getElementById("railfill");
+function rail(){const r=tl.getBoundingClientRect(),vh=innerHeight;fill.style.height=Math.min(1,Math.max(0,(vh*.6-r.top)/r.height))*100+"%";tl.querySelectorAll(".item:not([hidden])").forEach(it=>{if(it.getBoundingClientRect().top<vh*.75)it.classList.add("seen")})}
+addEventListener("scroll",rail,{passive:true});addEventListener("resize",rail);rail();
+</script>
+</body></html>

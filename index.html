@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Rota Curitiba</title>
+<meta name="description" content="O que acusaram Lula e Lulinha, o que a Justiça decidiu e o que ficou, processo por processo, com fontes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&family=Spline+Sans+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+<style>
+:root{--c-lula:#c0392b;--c-lulinha:#a35a12;--c-lava:#1f5bb5;--c-stf:#7a2a3d;--c-pt:#56625a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--c-lula:#f2796c;--c-lulinha:#e0a25a;--c-lava:#78a8f2;--c-stf:#e0899c;--c-pt:#9aa89f}}
+:root[data-theme="dark"]{--c-lula:#f2796c;--c-lulinha:#e0a25a;--c-lava:#78a8f2;--c-stf:#e0899c;--c-pt:#9aa89f}
+
+/* hero: the route as a transit line. Horizontal on wide screens, vertical on phones. */
+.hero{padding-block:40px 24px;display:grid;gap:22px}
+.routebox{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:22px 14px 16px}
+.metro{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0}
+.metro li{position:relative;display:grid;justify-items:center;text-align:center;gap:4px;padding-inline:4px}
+.metro li::after{content:"";position:absolute;top:11px;left:50%;width:100%;height:6px;background:var(--ink);z-index:0}
+.metro li:last-child::after{display:none}
+.metro li.jail::after{background:var(--stamp)}
+.metro .stn{width:28px;height:28px;border-radius:50%;background:var(--paper);border:5px solid var(--ink);position:relative;z-index:1}
+.metro li.jail .stn,.metro li.free .stn{border-color:var(--stamp)}
+.metro li.win .stn{border-color:var(--accent)}
+.metro .code{font-family:var(--mono);font-size:13px;font-weight:500;margin-top:4px}
+.metro .what{font-family:var(--ui);font-weight:700;font-size:14px;line-height:1.15}
+.metro .when{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.metro .dur{display:none;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--stamp)}
+.days{position:absolute;left:calc(100%/7*2.5);width:calc(100%/7*2);top:-6px;text-align:center;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--stamp);text-transform:uppercase}
+.stamp{position:absolute;left:3%;top:30%;transform:rotate(-9deg);font-family:var(--display);font-weight:800;font-size:clamp(34px,7vw,58px);letter-spacing:.08em;color:var(--stamp);border:4px solid var(--stamp);padding:0 14px;border-radius:4px;opacity:.85;pointer-events:none;mix-blend-mode:multiply;animation:stamp .45s 1s cubic-bezier(.2,1.6,.4,1) both;line-height:1.1}
+.stamp small{display:block;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-align:center;padding-bottom:4px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .stamp{mix-blend-mode:normal}}
+:root[data-theme="dark"] .stamp{mix-blend-mode:normal}
+@keyframes stamp{from{transform:rotate(-9deg) scale(1.6)}to{transform:rotate(-9deg) scale(1)}}
+@media (max-width:640px){
+  .metro{grid-template-columns:1fr;gap:14px}
+  .metro li{grid-template-columns:28px 1fr;justify-items:start;text-align:left;column-gap:14px;row-gap:0}
+  .metro li .stn{grid-row:1/4}
+  .metro li::after{top:28px;left:11px;width:6px;height:calc(100% + 14px - 28px)}
+  .metro .code{margin-top:0}
+  .days{display:none}
+  .metro .dur{display:block}
+  .stamp{left:auto;right:6%;top:10%}
+}
+
+/* scoreboard */
+.score{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:22px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:18px}
+.zero{display:grid;gap:2px}
+.zero b{font-family:var(--display);font-weight:800;font-size:110px;line-height:.85;color:var(--accent)}
+.zero span{font-family:var(--ui);font-weight:600;font-size:16px;line-height:1.25}
+.zero small{font-family:var(--ui);color:var(--muted);font-size:13px}
+.units{display:grid;gap:10px;min-width:0}
+.units .row{display:flex;gap:2px;position:relative}
+.unit{flex:1;height:46px;background:var(--o);border-radius:4px;cursor:pointer;outline:none;transition:opacity .2s}
+.unit:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.units .row:hover .unit:not(:hover){opacity:.5}
+.ulegend{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:var(--ui);font-size:14px}
+.ulegend span{display:inline-flex;align-items:center;gap:7px}
+.ulegend i{width:12px;height:12px;border-radius:3px;background:var(--o)}
+.utip{font-family:var(--ui);font-size:14px;min-height:42px;color:var(--muted);margin:0}
+.utip b{color:var(--ink)}
+@media (max-width:640px){.score{grid-template-columns:1fr}.zero b{font-size:90px}}
+
+/* case list (collapsible) */
+.case-d{border-bottom:1px solid var(--line)}
+.case-d summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 4px;font-family:var(--ui)}
+.case-d summary::-webkit-details-marker{display:none}
+.case-d summary i{width:12px;height:12px;border-radius:3px;background:var(--o)}
+.case-d summary b{font-weight:650;font-size:16px}
+.case-d summary span{font-size:13px;color:var(--muted)}
+.case-d summary span::after{content:" +";font-family:var(--mono)}
+.case-d[open] summary span::after{content:" −"}
+.case-d summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.case-d .case{margin-bottom:12px}
+.cases{border-top:1px solid var(--line);gap:0}
+.sub{font-family:var(--display);font-weight:800;font-size:30px;text-transform:uppercase;margin:12px 0 0;line-height:1}
+.par{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+
+/* case table */
+.cases{display:grid;gap:10px}
+.case{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--o);border-radius:4px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:hidden}
+.case>div{padding:14px 16px;display:grid;gap:6px;align-content:start;min-width:0}
+.case>div+div{border-left:1px solid var(--line)}
+.case .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.case h3{margin:0;font-size:18px;line-height:1.2}
+.case p{margin:0;font-size:15px;line-height:1.5}
+.case .out{display:inline-flex;align-items:center;gap:7px;font-family:var(--ui);font-weight:700;font-size:15px}
+.case .out i{width:11px;height:11px;border-radius:3px;background:var(--o)}
+@media (max-width:720px){.case{grid-template-columns:1fr}.case>div+div{border-left:0;border-top:1px solid var(--line)}}
+
+/* triplex explainer */
+.xp{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.xp article{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:16px;display:grid;gap:8px;align-content:start}
+.xp .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.xp h3{margin:0;font-size:18px;line-height:1.25}
+.xp p{margin:0;font-size:16px}
+.callout{background:var(--accent-soft);border:1px solid var(--accent);border-radius:4px;padding:16px 18px;display:grid;gap:6px}
+.callout h3{margin:0;font-size:18px}
+.callout p{margin:0}
+
+/* odebrecht x lula */
+.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;background:var(--paper);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.split>div{padding:16px 18px;display:grid;gap:8px;align-content:start;min-width:0}
+.split>div+div{border-left:1px solid var(--line)}
+.split .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.split h3{margin:0;font-size:19px;line-height:1.2}
+.split ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:15px}
+.split p{margin:0;font-size:15px}
+@media (max-width:640px){.split{grid-template-columns:1fr}.split>div+div{border-left:0;border-top:1px solid var(--line)}}
+
+/* why it fell */
+.steps{display:grid;border-top:1px solid var(--line)}
+.steps .row{display:grid;grid-template-columns:170px 1fr;gap:16px;padding-block:14px;border-bottom:1px solid var(--line)}
+.steps strong{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);padding-top:3px}
+.steps p{margin:0}
+.steps .src{margin-top:6px}
+@media (max-width:620px){.steps .row{grid-template-columns:1fr;gap:4px}}
+
+/* parallel page + filters */
+.par a{text-decoration:none;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:16px 18px;display:grid;gap:6px;transition:border-color .2s,transform .2s}
+.par a:hover{border-color:var(--accent);transform:translateY(-2px)}
+.par a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.par .n{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.par strong{font-family:var(--display);font-weight:800;font-size:34px;line-height:1;text-transform:uppercase}
+.par .d{font-family:var(--ui);font-size:15px;color:var(--muted)}
+
+/* myths */
+.myths{display:grid;gap:12px}
+.myth{background:var(--paper);border:1px solid var(--line);border-radius:4px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);overflow:hidden}
+.myth .say{padding:16px;border-right:1px solid var(--line);display:grid;gap:8px;align-content:start}
+.myth .say q{font-family:var(--display);font-weight:600;font-size:23px;line-height:1.1;quotes:"“" "”"}
+.myth .say small{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.myth .is{padding:16px;display:grid;gap:8px;align-content:start}
+.myth .is p{margin:0;font-size:16px}
+@media (max-width:640px){.myth{grid-template-columns:1fr}.myth .say{border-right:0;border-bottom:1px solid var(--line)}}
+</style>
+</head><body>
+
+
+<style>/* barra comum das Rotas */.rotas-bar{border-bottom:1px solid var(--line);background:var(--bg);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}.rotas-bar>div{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}.rotas-bar a{color:var(--muted);text-decoration:none;padding-block:2px;border-bottom:2px solid transparent}.rotas-bar a:hover{color:var(--ink)}.rotas-bar a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}.rotas-bar .rb-home{color:var(--accent);font-weight:600}.rotas-bar a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}</style><nav class="rotas-bar" aria-label="Rotas"><div><a class="rb-home" href="https://fcarvalhodev.github.io/rotas/">Rotas</a><a href="https://fcarvalhodev.github.io/rota-washington/">Washington</a><a href="https://fcarvalhodev.github.io/rota-master/">Master</a><a href="https://fcarvalhodev.github.io/rota-curitiba/" aria-current="page">Curitiba</a></div></nav>
+<header class="wrap hero">
+  <div class="kicker">Dossiê · Lula, Lulinha e a Lava Jato · atualizado em 9 out 2026</div>
+  <h1>Rota<br>Curitiba</h1>
+  <div class="routebox" aria-label="A rota de Lula na Lava Jato">
+    <span class="days" aria-hidden="true">580 dias preso</span>
+    <ol class="metro">
+      <li><span class="stn"></span><span class="code">CWB</span><span class="what">Moro condena</span><span class="when">12 jul 2017</span></li>
+      <li><span class="stn"></span><span class="code">POA</span><span class="what">TRF-4 confirma</span><span class="when">24 jan 2018</span></li>
+      <li class="jail"><span class="stn"></span><span class="code">CWB</span><span class="what">Prisão na PF</span><span class="when">7 abr 2018</span><span class="dur">580 dias preso</span></li>
+      <li class="jail"><span class="stn"></span><span class="code">BSB</span><span class="what">STJ mantém</span><span class="when">23 abr 2019</span></li>
+      <li class="free"><span class="stn"></span><span class="code">CWB</span><span class="what">Soltura</span><span class="when">8 nov 2019</span></li>
+      <li class="win"><span class="stn"></span><span class="code">BSB</span><span class="what">STF anula</span><span class="when">8 mar 2021</span></li>
+      <li class="win"><span class="stn"></span><span class="code">BSB</span><span class="what">Posse</span><span class="when">1º jan 2023</span></li>
+    </ol>
+    <div class="stamp" aria-hidden="true">Anulado<small>STF · MAR 2021</small></div>
+  </div>
+  <p class="lede">Lula foi condenado, preso por 580 dias e depois teve todas as condenações anuladas. Esta rota mostra, processo por processo, o que acusaram, o que a Justiça decidiu e o que ficou. Inclui também o que pesa contra ele, com o mesmo critério.</p>
+  <div class="legend">
+    <span><b class="ev doc">Documentado</b> decisão, registro ou declaração pública</span>
+    <span><b class="ev open">Em aberto</b> investigação em curso, sem conclusão</span>
+    <span><b class="ev alleg">Alegação</b> relato ou acusação ainda sem prova</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="sec" aria-labelledby="h-score" style="padding-top:8px">
+    <h2 id="h-score">O placar dos processos</h2>
+    <p class="sec-intro">As onze ações penais mais conhecidas contra Lula, pela situação de setembro de 2022 levantada pela CNN. Toque em um bloco, ou abra a lista abaixo, para ver cada caso.</p>
+    <div class="score">
+      <div class="zero"><b class="num">0</b><span>condenações em vigor</span><small>Juridicamente, Lula é inocente: não há sentença definitiva contra ele.</small></div>
+      <div class="units">
+        <div class="row" id="units" role="list" aria-label="Onze processos por desfecho"></div>
+        <div class="ulegend" id="ulegend"></div>
+        <p class="utip" id="utip" aria-live="polite">Só 3 dos 11 casos terminaram com absolvição no mérito. Os outros foram anulados, arquivados ou suspensos, sem que a Justiça dissesse se ele cometeu o crime.</p>
+      </div>
+    </div>
+    <div class="cases" id="cases"></div>
+    <div class="src"><a href="https://www.cnnbrasil.com.br/politica/fatos-primeiro-livre-para-disputar-a-eleicao-lula-nao-foi-inocentado-de-todas-as-acusacoes/" target="_blank" rel="noopener">CNN Brasil</a><a href="https://www.aosfatos.org/noticias/o-que-e-falso-e-o-que-e-fato-em-declaracoes-de-lula-sobre-absolvicoes-na-onu-e-na-justica/" target="_blank" rel="noopener">Aos Fatos</a><a href="https://www.poder360.com.br/justica/lula-diz-que-foi-absolvido-mas-segue-com-problemas-na-justica/" target="_blank" rel="noopener">Poder360</a></div>
+  </section>
+
+
+  <section class="sec" aria-labelledby="h-tx">
+    <h2 id="h-tx">O triplex, por dentro</h2>
+    <p class="sec-intro">É o caso que levou Lula à prisão. Entender o que foi acusado é o que separa os argumentos que se sustentam dos que não se sustentam.</p>
+    <div class="xp">
+      <article><span class="tag">A acusação</span><h3>R$ 3,7 milhões em benefícios da OAS</h3><p>O MPF disse que Lula e Marisa Letícia eram os donos reais de um triplex no Guarujá. A compra e a reforma, inclusive um elevador privativo, seriam propina da OAS por contratos na Petrobras.</p></article>
+      <article><span class="tag">As provas citadas</span><h3>Um relatório de 2010 e o dono da OAS</h3><p>Moro se apoiou em uma reportagem de 2010 que já tratava o imóvel como do casal e no depoimento de Léo Pinheiro, dono da OAS. A defesa disse que Pinheiro falava para conseguir uma delação.</p></article>
+      <article><span class="tag">A defesa</span><h3>O apartamento nunca foi dele</h3><p>Lula só teria sido um cliente em potencial, ao qual a unidade foi oferecida em 2014 sem que ele a comprasse. Para a defesa, a dona do imóvel era a OAS.</p></article>
+    </div>
+    <div class="callout">
+      <h3>E o dinheiro na conta?</h3>
+      <p>A acusação nunca foi de dinheiro depositado na conta de Lula. Era o apartamento e a reforma. Ao condenar, Moro mandou bloquear cerca de R$ 16 milhões em bens de Lula, incluindo R$ 606,7 mil em contas bancárias, para ressarcir a Petrobras. O ponto que a defesa sempre atacou foi outro: a prova de que o imóvel era dele.</p>
+    </div>
+    <div class="src"><a href="https://www.folhavitoria.com.br/politica/entenda-o-caso-triplex-em-que-lula-foi-condenado/" target="_blank" rel="noopener">Folha Vitória</a><a href="https://agenciabrasil.ebc.com.br/justica/noticia/2019-04/maioria-do-stj-decide-reduzir-pena-do-ex-presidente-lula" target="_blank" rel="noopener">Agência Brasil</a></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-fell">
+    <h2 id="h-fell">Por que as condenações caíram</h2>
+    <div class="steps">
+      <div class="row"><strong>Vaza Jato · jun 2019</strong><div><p>O Intercept publica conversas de Moro com o procurador Deltan Dallagnol. Elas sugerem que o juiz orientava a acusação e que Dallagnol tinha dúvidas sobre as provas horas antes da denúncia do triplex. Moro disse que não havia nada de irregular e criticou a obtenção das mensagens por hackers.</p><div class="src"><a href="https://www.intercept.com.br/?p=286347" target="_blank" rel="noopener">Intercept</a><a href="https://www.migalhas.com.br/Quentes/17,MI304061,91041-Nao+tem+nada+ali+diz+Moro+sobre+vazamento+de+mensagens" target="_blank" rel="noopener">Migalhas · resposta de Moro</a></div></div></div>
+      <div class="row"><strong>Incompetência · mar 2021</strong><div><p>Fachin decide que a vara de Curitiba não era competente para julgar Lula e anula as quatro ações de lá. O plenário do STF confirma depois. Os processos teriam de recomeçar em Brasília.</p><div class="src"><a href="https://www.poder360.com.br/governo/da-prisao-ao-planalto-lula-era-preso-ha-exatos-5-anos" target="_blank" rel="noopener">Poder360</a></div></div></div>
+      <div class="row"><strong>Suspeição · mar e jun 2021</strong><div><p>A 2ª Turma do STF declara, por 3 a 2, que Moro foi parcial. Em junho, o plenário mantém a decisão por 7 a 4. Com isso, as provas colhidas sob Moro não podem ser reaproveitadas.</p><div class="src"><a href="https://www.migalhas.com.br/quentes/347494/stf-moro-foi-parcial-ao-condenar-lula" target="_blank" rel="noopener">Migalhas</a></div></div></div>
+      <div class="row"><strong>Prescrição · 2021–2022</strong><div><p>No recomeço em Brasília, a denúncia do sítio é rejeitada e o triplex é arquivado por prescrição. Nenhum dos dois casos voltou a ser julgado no mérito.</p><div class="src"><a href="https://www.cnnbrasil.com.br/politica/fatos-primeiro-livre-para-disputar-a-eleicao-lula-nao-foi-inocentado-de-todas-as-acusacoes/" target="_blank" rel="noopener">CNN Brasil</a></div></div></div>
+      <div class="row"><strong>ONU · abr 2022</strong><div><p>O Comitê de Direitos Humanos da ONU conclui que Moro e os procuradores violaram o direito de Lula a um juiz imparcial, à presunção de inocência e à privacidade, e que a proibição da candidatura em 2018 foi arbitrária. O comitê não julgou se ele cometeu os crimes.</p><div class="src"><a href="https://www.poder360.com.br/justica/onu-conclui-que-moro-foi-parcial-no-julgamento-de-lula/" target="_blank" rel="noopener">Poder360</a></div></div></div>
+      <div class="row"><strong>Provas da Odebrecht · set 2023</strong><div><p>Toffoli declara imprestáveis as provas do acordo de leniência da Odebrecht, por estarem contaminadas, e chama a prisão de Lula de um dos maiores erros judiciários do país. O quadro abaixo separa o que isso muda para a empresa e o que muda para Lula.</p><div class="src"><a href="https://www.justice.gov/opa/pr/odebrecht-and-braskem-plead-guilty-and-agree-pay-least-35-billion-global-penalties-resolve" target="_blank" rel="noopener">Departamento de Justiça dos EUA</a><a href="https://diariodonordeste.verdesmares.com.br/pontopoder/toffoli-anula-provas-da-odebrecht-e-diz-que-prisao-de-lula-na-lava-jato-foi-armacao-1.3414327" target="_blank" rel="noopener">Diário do Nordeste</a><a href="https://www.revistaoeste.com/politica/odebrecht-confessou-crimes-que-foram-anulados-por-toffoli/" target="_blank" rel="noopener">Revista Oeste</a></div></div></div>
+    </div>
+    <div class="split" aria-label="O que é da Odebrecht e o que é de Lula">
+      <div><span class="tag">A empresa</span><h3>O que a Odebrecht confessou</h3>
+        <p>Em dezembro de 2016, num acordo com Brasil, EUA e Suíça, admitiu:</p>
+        <ul><li>mais de dez anos de propina e fraude em licitações, desde 2001;</li><li>cerca de US$ 788 milhões pagos a autoridades e partidos em vários países;</li><li>multas de pelo menos US$ 3,5 bilhões, junto com a Braskem.</li></ul>
+        <p>Essa confissão continua de pé. A decisão de Toffoli não a apagou.</p>
+        <div class="src"><a href="https://www.justice.gov/opa/pr/odebrecht-and-braskem-plead-guilty-and-agree-pay-least-35-billion-global-penalties-resolve" target="_blank" rel="noopener">Departamento de Justiça dos EUA</a></div></div>
+      <div><span class="tag">Lula</span><h3>O que acusaram Lula com material da Odebrecht</h3>
+        <ul><li>Doações ao Instituto Lula como propina: suspenso em 2021.</li><li>Terreno para o Instituto Lula: suspenso em 2021.</li><li>Linha do BNDES para obras em Angola: trancado.</li><li>Reformas no sítio de Atibaia, junto com a OAS: condenação anulada e denúncia rejeitada.</li></ul>
+        <p>Nenhuma dessas acusações terminou em condenação válida. A confissão da empresa não diz, por si só, que Lula recebeu propina.</p>
+        <div class="src"><a href="https://www.cnnbrasil.com.br/politica/fatos-primeiro-livre-para-disputar-a-eleicao-lula-nao-foi-inocentado-de-todas-as-acusacoes/" target="_blank" rel="noopener">CNN Brasil</a><a href="https://www.poder360.com.br/justica/lula-diz-que-foi-absolvido-mas-segue-com-problemas-na-justica/" target="_blank" rel="noopener">Poder360</a></div></div>
+    </div>
+  </section>
+
+
+  <section class="sec" aria-labelledby="h-against">
+    <h2 id="h-against">Os dois lados</h2>
+    <p class="sec-intro">Para a conclusão valer alguma coisa, ela precisa sobreviver aos melhores argumentos contra Lula. Estes são fatos, não opiniões.</p>
+    <div class="steps">
+      <div class="row"><strong>Três instâncias</strong><div><p>Antes da anulação, a condenação do triplex foi confirmada pelo TRF-4 e, por unanimidade, pela 5ª Turma do STJ, que só reduziu a pena. A anulação veio por questões de processo, não por um novo julgamento das provas.</p><div class="src"><a href="https://agenciabrasil.ebc.com.br/justica/noticia/2019-04/maioria-do-stj-decide-reduzir-pena-do-ex-presidente-lula" target="_blank" rel="noopener">Agência Brasil</a></div></div></div>
+      <div class="row"><strong>Mérito</strong><div><p>Só 3 dos 11 casos tiveram absolvição no mérito. Juristas divergem se anulação e prescrição equivalem a absolvição. Na linguagem técnica, não equivalem.</p><div class="src"><a href="https://www.aosfatos.org/noticias/o-que-e-falso-e-o-que-e-fato-em-declaracoes-de-lula-sobre-absolvicoes-na-onu-e-na-justica/" target="_blank" rel="noopener">Aos Fatos</a></div></div></div>
+      <div class="row"><strong>Petrobras</strong><div><p>A corrupção na estatal existiu. Em 2015, a Petrobras reconheceu R$ 6,2 bilhões em perdas com desvios no balanço de 2014. A Odebrecht confessou pagar propina, como mostra o quadro acima.</p><div class="src"><a href="https://www.congressoemfoco.com.br/noticias/petrobras-perde-r-62-bilhoes-com-corrupcao/" target="_blank" rel="noopener">Congresso em Foco</a></div></div></div>
+      <div class="row"><strong>Mensalão</strong><div><p>Em 2012, o STF condenou José Dirceu, José Genoino e Delúbio Soares, da cúpula do PT, por corrupção ativa. Lula não foi denunciado nesse caso.</p><div class="src"><a href="https://www.congressoemfoco.com.br/noticia/67766/stf-dirceu-genoino-e-delubio-condenados-por-corrupcao" target="_blank" rel="noopener">Congresso em Foco</a></div></div></div>
+      <div class="row"><strong>Caso Master</strong><div><p>Lula recebeu Daniel Vorcaro no Planalto em dezembro de 2024, fora da agenda. Não há investigação contra ele.</p><a class="more" href="https://fcarvalhodev.github.io/rota-master/">Ver na Rota Master →</a></div></div>
+    </div>
+    <h3 class="sub">Onde a prova termina</h3>
+    <div class="verdict">
+      <div class="col yes">
+        <h3>O que está comprovado</h3>
+        <ul>
+          <li>Não há nenhuma condenação em vigor contra Lula. Juridicamente, ele é inocente.</li>
+          <li>O STF declarou Moro parcial e a vara de Curitiba incompetente para julgá-lo.</li>
+          <li>Lula ficou 580 dias preso por uma condenação que depois foi anulada.</li>
+          <li>Em três casos, Lula foi absolvido no mérito.</li>
+          <li>A corrupção na Petrobras existiu, e dirigentes do PT foram condenados no mensalão.</li>
+        </ul>
+      </div>
+      <div class="col not">
+        <h3>O que nenhuma decisão afirmou</h3>
+        <ul>
+          <li>Que Lula provou ser inocente no mérito do triplex e do sítio. Os casos foram anulados e prescreveram.</li>
+          <li>Que as provas foram forjadas. As decisões falam em parcialidade, incompetência e provas contaminadas.</li>
+          <li>Que Lula recebeu propina. A condenação que dizia isso não existe mais.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-myth">
+    <h2 id="h-myth">O que circula × o que consta</h2>
+    <p class="sec-intro">Frases comuns dos dois lados, comparadas com decisões e registros.</p>
+    <div class="myths" id="myths"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-more">
+    <h2 id="h-more">Para ir além</h2>
+    <div class="par">
+      <a href="linha-do-tempo.html"><span class="n">Cronologia · 2012–2026</span><strong>Linha do tempo</strong><span class="d">Todos os marcos, do mensalão ao segundo turno de 2026, com filtro por envolvido.</span><span class="more">Abrir página →</span></a>
+      <a href="lulinha.html"><span class="n">Paralelo · Fábio Luís Lula da Silva</span><strong>O caso Lulinha</strong><span class="d">Outra história, em página própria: o que foi arquivado, o que está aberto e o que é boato.</span><span class="more">Abrir página →</span></a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Fatos reunidos a partir de reportagens publicadas até 9 de outubro de 2026. O placar dos processos reflete a situação de setembro de 2022 levantada pela CNN. Investigação não é condenação, e anulação não é absolvição no mérito.</p>
+    <p>Segundo turno: 25 de outubro de 2026.</p>
+  </footer>
+</main>
+
+<script>
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const O={merito:["Absolvido no mérito","var(--o-merito)"],anulado:["Anulado","var(--o-anulado)"],arquivado:["Arquivado ou prescrito","var(--o-arquivado)"],suspenso:["Suspenso ou trancado","var(--o-suspenso)"]};
+const C=[
+ {o:"anulado",t:"Triplex do Guarujá",a:"Corrupção passiva e lavagem. R$ 3,7 milhões em benefícios da OAS, no apartamento e na reforma.",d:"Moro condenou em 2017. TRF-4 aumentou a pena e o STJ a reduziu, mantendo a condenação. O STF anulou em 2021.",f:"Refeito em Brasília, foi arquivado por prescrição em janeiro de 2022."},
+ {o:"anulado",t:"Sítio de Atibaia",a:"Corrupção e lavagem. Reformas pagas por empreiteiras num sítio frequentado pela família.",d:"Gabriela Hardt condenou em fevereiro de 2019 a 12 anos e 11 meses. O TRF-4 aumentou para 17 anos. O STF anulou em 2021.",f:"Em agosto de 2021, a Justiça do DF rejeitou a nova denúncia por prescrição e falta de provas."},
+ {o:"merito",t:"Silêncio de Cerveró",a:"Obstrução de Justiça. Suposta compra do silêncio do ex-diretor da Petrobras.",d:"Todos os réus foram absolvidos em 2018 por insuficiência de provas.",f:"Absolvição no mérito."},
+ {o:"merito",t:"Quadrilhão do PT",a:"Organização criminosa para desviar dinheiro de estatais.",d:"A Justiça Federal do DF absolveu sumariamente em 4 de dezembro de 2019.",f:"Absolvição no mérito: o fato narrado não era crime."},
+ {o:"merito",t:"Zelotes · medida provisória",a:"Corrupção passiva na edição de uma medida provisória.",d:"Absolvição por falta de provas.",f:"Absolvição no mérito."},
+ {o:"arquivado",t:"Costa Rica",a:"Tráfico de influência.",d:"A 9ª Vara Federal de São Paulo arquivou por falta de provas e prescrição.",f:"Arquivado."},
+ {o:"suspenso",t:"Caças Gripen",a:"Tráfico de influência, lavagem e organização criminosa na compra de 36 caças suecos.",d:"Lewandowski suspendeu a ação em março de 2022.",f:"Suspenso."},
+ {o:"suspenso",t:"Doações ao Instituto Lula",a:"Doações da Odebrecht como propina.",d:"Lewandowski suspendeu em 2021. As provas da Odebrecht foram anuladas em 2023.",f:"Suspenso."},
+ {o:"suspenso",t:"Terreno do Instituto Lula",a:"Compra de terreno pela Odebrecht para o instituto.",d:"Lewandowski suspendeu em 2021 e a 2ª Turma confirmou em 2022.",f:"Suspenso."},
+ {o:"suspenso",t:"Guiné Equatorial",a:"Lavagem de R$ 1 milhão.",d:"A 5ª Turma do TRF-3 trancou a ação em julho de 2021.",f:"Trancado."},
+ {o:"suspenso",t:"BNDES e Angola",a:"Tráfico de influência em linha de crédito para obras da Odebrecht em Angola.",d:"A 10ª Vara Federal do DF trancou a ação.",f:"Trancado."}
+];
+/* scoreboard units, grouped by outcome */
+const order=["merito","anulado","arquivado","suspenso"];
+const sorted=[...C].sort((x,y)=>order.indexOf(x.o)-order.indexOf(y.o));
+const units=document.getElementById("units"),utip=document.getElementById("utip"),base=utip.innerHTML;
+sorted.forEach(c=>{const u=document.createElement("button");u.type="button";u.className="unit";u.style.setProperty("--o",O[c.o][1]);u.setAttribute("role","listitem");u.setAttribute("aria-label",`${c.t}: ${O[c.o][0]}`);
+  const show=()=>utip.innerHTML=`<b>${esc(c.t)}</b> · ${O[c.o][0]}. ${esc(c.f)}`;
+  u.addEventListener("mouseenter",show);u.addEventListener("focus",show);u.addEventListener("click",show);
+  u.addEventListener("mouseleave",()=>utip.innerHTML=base);units.appendChild(u)});
+document.getElementById("ulegend").innerHTML=order.map(k=>`<span style="--o:${O[k][1]}"><i></i>${O[k][0]} · ${C.filter(c=>c.o===k).length}</span>`).join("");
+document.getElementById("cases").innerHTML=sorted.map((c,i)=>`<details class="case-d" id="caso-${i}" style="--o:${O[c.o][1]}"><summary><i></i><b>${esc(c.t)}</b><span>${O[c.o][0]}</span></summary><div class="case"><div><span class="lab">O que acusaram</span><p>${esc(c.a)}</p></div><div><span class="lab">O que a Justiça decidiu</span><p>${esc(c.d)}</p></div><div><span class="lab">O que ficou</span><span class="out"><i></i>${O[c.o][0]}</span><p>${esc(c.f)}</p></div></div></details>`).join("");
+units.querySelectorAll(".unit").forEach((u,i)=>u.addEventListener("click",()=>{const d=document.getElementById("caso-"+i);d.open=true;d.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"center"})}));
+
+
+/* myths */
+const M=[
+ ["Lula foi absolvido em todos os processos.","Apoiadores de Lula","part","Não há condenação em vigor, e ele é juridicamente inocente. Mas só 3 casos tiveram absolvição no mérito. Os outros foram anulados, arquivados, prescritos ou suspensos.",[["Aos Fatos","https://www.aosfatos.org/noticias/o-que-e-falso-e-o-que-e-fato-em-declaracoes-de-lula-sobre-absolvicoes-na-onu-e-na-justica/"]]],
+ ["Lula é ex-presidiário condenado em três instâncias.","Opositores de Lula","part","É verdade que ele foi preso e que a condenação do triplex passou por três instâncias. Mas o STF anulou as condenações, e hoje não existe nenhuma contra ele. Usar isso como se ainda valesse é enganoso.",[["Poder360","https://www.poder360.com.br/governo/da-prisao-ao-planalto-lula-era-preso-ha-exatos-5-anos"]]],
+ ["A ONU absolveu Lula.","Apoiadores de Lula","no","O Comitê de Direitos Humanos não tem poder para absolver. Ele concluiu que os direitos de Lula foram violados, sem julgar se houve crime.",[["Aos Fatos","https://www.aosfatos.org/noticias/o-que-e-falso-e-o-que-e-fato-em-declaracoes-de-lula-sobre-absolvicoes-na-onu-e-na-justica/"],["Poder360","https://www.poder360.com.br/justica/onu-conclui-que-moro-foi-parcial-no-julgamento-de-lula/"]]],
+ ["Nunca acharam o dinheiro na conta do Lula.","Apoiadores de Lula","part","A acusação nunca foi de dinheiro na conta. Era o apartamento e a reforma, que a defesa diz que nunca foram dele. O argumento forte é esse: a propriedade, que a condenação dava como provada, não sobreviveu à anulação.",[["Folha Vitória","https://www.folhavitoria.com.br/politica/entenda-o-caso-triplex-em-que-lula-foi-condenado/"]]],
+ ["As provas contra Lula foram forjadas.","Apoiadores de Lula","part","Nenhuma decisão diz que foram forjadas. O STF declarou Moro parcial, a vara incompetente e as provas da Odebrecht imprestáveis por contaminação.",[["Migalhas","https://www.migalhas.com.br/quentes/347494/stf-moro-foi-parcial-ao-condenar-lula"],["Diário do Nordeste","https://diariodonordeste.verdesmares.com.br/pontopoder/toffoli-anula-provas-da-odebrecht-e-diz-que-prisao-de-lula-na-lava-jato-foi-armacao-1.3414327"]]],
+ ["As condenações caíram por tecnicalidade, mas ele é culpado.","Opositores de Lula","part","A anulação foi mesmo processual: competência da vara e parcialidade do juiz, decididas pelo plenário do STF. Mas sem condenação válida não há culpa reconhecida, e os casos não voltaram a ser julgados no mérito.",[["Migalhas","https://www.migalhas.com.br/quentes/347494/stf-moro-foi-parcial-ao-condenar-lula"]]],
+ ["A delação de Palocci provou tudo.","Opositores de Lula","no","Em um dos inquéritos abertos a partir dela, a PF concluiu que as informações pareciam ter saído de pesquisas na internet e não achou provas.",[["Migalhas","https://www.migalhas.com.br/quentes/332077/em-mais-um-caso-pf-conclui-que-delacao-de-palocci-foi-invencao"]]]
+];
+const ML={no:"Não consta",part:"Em parte",doc:"Documentado",open:"Em aberto"};
+document.getElementById("myths").innerHTML=M.map(m=>`<article class="myth"><div class="say"><small>${m[1]}</small><q>${esc(m[0])}</q></div><div class="is"><span class="ev ${m[2]}" style="justify-self:start">${ML[m[2]]}</span><p>${esc(m[3])}</p><div class="src">${m[4].map(s=>`<a href="${s[1]}" target="_blank" rel="noopener">${s[0]}</a>`).join("")}</div></div></article>`).join("");
+</script>
+
+</body></html>

@@ -1,0 +1,90 @@
+/* Layout: the case file (autos). Condensed display for headings, a book serif for reading, mono for dates and case numbers. Araucária green is the accent; red is reserved for the ANULADO stamp and the prison segment. */
+:root{
+  --bg:#edf0ec; --paper:#f9faf8; --ink:#17201b; --muted:#56625a; --line:#cbd4cd;
+  --accent:#2f6b4f; --accent-soft:#dcebe2; --stamp:#b3261e;
+  --doc:#17201b; --alleg:#a3501a; --alleg-soft:#f8e6d7; --open:#5b4bb0; --open-soft:#e7e3f6; --no:#a11d33; --no-soft:#f7dde1;
+  --o-merito:#1baf7a; --o-anulado:#eb6834; --o-arquivado:#2a78d6; --o-suspenso:#eda100;
+  --display:"Barlow Condensed","Arial Narrow",Impact,sans-serif;
+  --body:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Spline Sans Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#111713; --paper:#161d19; --ink:#e4ebe6; --muted:#9aa89f; --line:#29332d;
+  --accent:#6cc79a; --accent-soft:#18301f; --stamp:#f0675c;
+  --doc:#e4ebe6; --alleg:#f0a066; --alleg-soft:#3a2516; --open:#ab9ff0; --open-soft:#29254a; --no:#f07a8c; --no-soft:#3d1a21;
+  --o-merito:#199e70; --o-anulado:#d95926; --o-arquivado:#3987e5; --o-suspenso:#c98500;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111713; --paper:#161d19; --ink:#e4ebe6; --muted:#9aa89f; --line:#29332d;
+  --accent:#6cc79a; --accent-soft:#18301f; --stamp:#f0675c;
+  --doc:#e4ebe6; --alleg:#f0a066; --alleg-soft:#3a2516; --open:#ab9ff0; --open-soft:#29254a; --no:#f07a8c; --no-soft:#3d1a21;
+  --o-merito:#199e70; --o-anulado:#d95926; --o-arquivado:#3987e5; --o-suspenso:#c98500;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.62}
+a{color:inherit}
+.wrap{max-width:880px;margin:0 auto;padding-inline:16px}
+.mono{font-family:var(--mono)}
+.num{font-variant-numeric:tabular-nums}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(66px,17vw,150px);line-height:.84;margin:0;text-transform:uppercase;letter-spacing:-.01em;text-wrap:balance}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(36px,7.5vw,56px);line-height:.95;margin:0;text-transform:uppercase;text-wrap:balance}
+h3{font-family:var(--ui);text-wrap:balance}
+.lede{font-size:19px;max-width:62ch;margin:0}
+.sec{padding-block:48px 8px;display:grid;gap:20px}
+.sec-intro{color:var(--muted);max-width:62ch;margin:0}
+
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;font-family:var(--ui);font-size:14px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.ev{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:2px;white-space:nowrap;font-weight:500}
+.ev.doc{background:var(--doc);color:var(--paper)}
+.ev.alleg{background:var(--alleg-soft);color:var(--alleg);border:1px solid var(--alleg)}
+.ev.open{background:var(--open-soft);color:var(--open);border:1px dashed var(--open)}
+.ev.no{background:var(--no-soft);color:var(--no);border:1px solid var(--no)}
+.ev.part{background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent)}
+
+.src{font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:2px 14px}
+.src a{color:var(--muted);text-underline-offset:2px}
+.src a:hover{color:var(--accent)}
+.more,.back{font-family:var(--mono);font-size:13px;color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor;justify-self:start}
+.more:focus-visible,.back:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+/* timeline */
+.year{font-family:var(--display);font-weight:800;font-size:46px;color:var(--accent);margin:26px 0 4px;line-height:1}
+.tl{position:relative;display:grid;gap:14px}
+.rail{position:absolute;left:96px;top:0;bottom:0;width:2px;background:var(--line)}
+.rail b{display:block;width:100%;background:var(--accent);height:0}
+.item{display:grid;grid-template-columns:84px 1fr;gap:24px;position:relative}
+.item .date{font-family:var(--mono);font-size:13px;color:var(--muted);text-align:right;padding-top:16px;line-height:1.3}
+.item .dot{position:absolute;left:91px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--muted);transition:background .3s,border-color .3s}
+.item.seen .dot{background:var(--accent);border-color:var(--accent)}
+.card{min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:14px 16px;display:grid;gap:8px;transform:translateX(10px);transition:transform .45s ease}
+.item.seen .card{transform:none}
+.item.key .card{border-left:4px solid var(--accent)}
+.card .top{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;justify-content:space-between}
+.actors{display:flex;flex-wrap:wrap;gap:6px 10px}
+.actor{font-family:var(--ui);font-size:12px;font-weight:600;color:var(--c);display:inline-flex;align-items:center;gap:5px}
+.actor::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c)}
+.card h3{font-size:18px;line-height:1.3;margin:0;font-weight:650}
+.card p{margin:0;font-size:16px}
+.empty{color:var(--muted);font-style:italic}
+@media (max-width:620px){
+  .rail{left:6px}
+  .item{grid-template-columns:1fr;gap:6px;padding-left:24px}
+  .item .date{text-align:left;padding-top:0}
+  .item .dot{left:1px;top:4px}
+}
+
+/* comprovado / não provado */
+.verdict{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.col{min-width:0;padding:18px;border-radius:4px;display:grid;gap:10px;align-content:start}
+.col.yes{background:var(--paper);border:1px solid var(--line)}
+.col.not{background:var(--open-soft);border:1px dashed var(--open)}
+.col h3{margin:0;font-size:17px}
+.col ul{margin:0;padding-left:18px;display:grid;gap:8px}
+
+footer{padding-block:44px 56px;color:var(--muted);font-family:var(--ui);font-size:14px;display:grid;gap:8px}
+footer p{margin:0;max-width:66ch}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.card{transform:none}}

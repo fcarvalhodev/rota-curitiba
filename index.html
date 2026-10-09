@@ -4,7 +4,7 @@
 <title>Rota Curitiba</title>
 <meta name="description" content="O que acusaram Lula e Lulinha, o que a Justiça decidiu e o que ficou, processo por processo, com fontes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&family=Spline+Sans+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="estilo.css">
 <style>
 :root{--c-lula:#c0392b;--c-lulinha:#a35a12;--c-lava:#1f5bb5;--c-stf:#7a2a3d;--c-pt:#56625a}
@@ -13,7 +13,7 @@
 
 /* hero: the route as a transit line. Horizontal on wide screens, vertical on phones. */
 .hero{padding-block:40px 24px;display:grid;gap:22px}
-.routebox{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:22px 14px 16px}
+.routebox{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:22px 14px 16px;overflow:hidden}
 .metro{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0}
 .metro li{position:relative;display:grid;justify-items:center;text-align:center;gap:4px;padding-inline:4px}
 .metro li::after{content:"";position:absolute;top:11px;left:50%;width:100%;height:6px;background:var(--ink);z-index:0}
@@ -27,7 +27,7 @@
 .metro .when{font-family:var(--mono);font-size:11px;color:var(--muted)}
 .metro .dur{display:none;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--stamp)}
 .days{position:absolute;left:calc(100%/7*2.5);width:calc(100%/7*2);top:-6px;text-align:center;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--stamp);text-transform:uppercase}
-.stamp{position:absolute;left:3%;top:30%;transform:rotate(-9deg);font-family:var(--display);font-weight:800;font-size:clamp(34px,7vw,58px);letter-spacing:.08em;color:var(--stamp);border:4px solid var(--stamp);padding:0 14px;border-radius:4px;opacity:.85;pointer-events:none;mix-blend-mode:multiply;animation:stamp .45s 1s cubic-bezier(.2,1.6,.4,1) both;line-height:1.1}
+.stamp{position:absolute;left:3%;top:30%;transform:rotate(-9deg);font-family:var(--display);font-stretch:62%;font-weight:800;font-size:clamp(30px,6.5vw,58px);letter-spacing:.08em;color:var(--stamp);border:4px solid var(--stamp);padding:0 14px;border-radius:4px;opacity:.85;pointer-events:none;mix-blend-mode:multiply;animation:stamp .45s 1s cubic-bezier(.2,1.6,.4,1) both;line-height:1.1}
 .stamp small{display:block;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-align:center;padding-bottom:4px}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .stamp{mix-blend-mode:normal}}
 :root[data-theme="dark"] .stamp{mix-blend-mode:normal}
@@ -39,14 +39,14 @@
   .metro li::after{top:28px;left:11px;width:6px;height:calc(100% + 14px - 28px)}
   .metro .code{margin-top:0}
   .days{display:none}
-  .metro .dur{display:block}
+  .metro .dur{display:block;grid-column:2}
   .stamp{left:auto;right:6%;top:10%}
 }
 
 /* scoreboard */
 .score{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:22px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:18px}
 .zero{display:grid;gap:2px}
-.zero b{font-family:var(--display);font-weight:800;font-size:110px;line-height:.85;color:var(--accent)}
+.zero b{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:110px;line-height:.85;color:var(--accent)}
 .zero span{font-family:var(--ui);font-weight:600;font-size:16px;line-height:1.25}
 .zero small{font-family:var(--ui);color:var(--muted);font-size:13px}
 .units{display:grid;gap:10px;min-width:0}
@@ -73,7 +73,7 @@
 .case-d summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .case-d .case{margin-bottom:12px}
 .cases{border-top:1px solid var(--line);gap:0}
-.sub{font-family:var(--display);font-weight:800;font-size:30px;text-transform:uppercase;margin:12px 0 0;line-height:1}
+.sub{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:30px;text-transform:uppercase;margin:12px 0 0;line-height:1}
 .par{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
 
 /* case table */
@@ -121,14 +121,14 @@
 .par a:hover{border-color:var(--accent);transform:translateY(-2px)}
 .par a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .par .n{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
-.par strong{font-family:var(--display);font-weight:800;font-size:34px;line-height:1;text-transform:uppercase}
+.par strong{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:34px;line-height:1;text-transform:uppercase}
 .par .d{font-family:var(--ui);font-size:15px;color:var(--muted)}
 
 /* myths */
 .myths{display:grid;gap:12px}
 .myth{background:var(--paper);border:1px solid var(--line);border-radius:4px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);overflow:hidden}
 .myth .say{padding:16px;border-right:1px solid var(--line);display:grid;gap:8px;align-content:start}
-.myth .say q{font-family:var(--display);font-weight:600;font-size:23px;line-height:1.1;quotes:"“" "”"}
+.myth .say q{font-family:var(--display);font-stretch:66%;font-weight:600;font-size:23px;line-height:1.1;quotes:"“" "”"}
 .myth .say small{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .myth .is{padding:16px;display:grid;gap:8px;align-content:start}
 .myth .is p{margin:0;font-size:16px}
@@ -137,7 +137,7 @@
 </head><body>
 
 
-<style>/* barra comum das Rotas */.rotas-bar{border-bottom:1px solid var(--line);background:var(--bg);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}.rotas-bar>div{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}.rotas-bar a{color:var(--muted);text-decoration:none;padding-block:2px;border-bottom:2px solid transparent}.rotas-bar a:hover{color:var(--ink)}.rotas-bar a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}.rotas-bar .rb-home{color:var(--accent);font-weight:600}.rotas-bar a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}</style><nav class="rotas-bar" aria-label="Rotas"><div><a class="rb-home" href="https://fcarvalhodev.github.io/rotas/">Rotas</a><a href="https://fcarvalhodev.github.io/rota-washington/">Washington</a><a href="https://fcarvalhodev.github.io/rota-master/">Master</a><a href="https://fcarvalhodev.github.io/rota-curitiba/" aria-current="page">Curitiba</a><a href="https://fcarvalhodev.github.io/rota-da-fe/">Fé</a></div></nav>
+<style>/* barra comum das Rotas */.rotas-bar{border-bottom:1px solid var(--line);background:var(--bg);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}.rotas-bar>div{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}.rotas-bar a{color:var(--muted);text-decoration:none;padding-block:2px;border-bottom:2px solid transparent}.rotas-bar a:hover{color:var(--ink)}.rotas-bar a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}.rotas-bar .rb-home{color:var(--accent);font-weight:600}.rotas-bar a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}</style><nav class="rotas-bar" aria-label="Rotas"><div><a class="rb-home" href="https://fcarvalhodev.github.io/rotas/">Rotas</a><a href="https://fcarvalhodev.github.io/rota-washington/">Washington</a><a href="https://fcarvalhodev.github.io/rota-master/">Master</a><a href="https://fcarvalhodev.github.io/rota-curitiba/" aria-current="page">Curitiba</a><a href="https://fcarvalhodev.github.io/rota-da-fe/">Fé</a><a href="https://fcarvalhodev.github.io/rota-esplanada/">Esplanada</a></div></nav>
 <header class="wrap hero">
   <div class="kicker">Dossiê · Lula, Lulinha e a Lava Jato · atualizado em 9 out 2026</div>
   <h1>Rota<br>Curitiba</h1>

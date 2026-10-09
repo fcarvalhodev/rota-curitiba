@@ -4,10 +4,10 @@
   --accent:#2f6b4f; --accent-soft:#dcebe2; --stamp:#b3261e;
   --doc:#17201b; --alleg:#a3501a; --alleg-soft:#f8e6d7; --open:#5b4bb0; --open-soft:#e7e3f6; --no:#a11d33; --no-soft:#f7dde1;
   --o-merito:#1baf7a; --o-anulado:#eb6834; --o-arquivado:#2a78d6; --o-suspenso:#eda100;
-  --display:"Barlow Condensed","Arial Narrow",Impact,sans-serif;
-  --body:"Literata",Georgia,"Times New Roman",serif;
-  --ui:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --mono:"Spline Sans Mono",ui-monospace,Menlo,Consolas,monospace;
+  --display:"Archivo","Arial Narrow",Impact,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --ui:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#111713; --paper:#161d19; --ink:#e4ebe6; --muted:#9aa89f; --line:#29332d;
@@ -29,8 +29,8 @@ a{color:inherit}
 .mono{font-family:var(--mono)}
 .num{font-variant-numeric:tabular-nums}
 .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
-h1{font-family:var(--display);font-weight:800;font-size:clamp(66px,17vw,150px);line-height:.84;margin:0;text-transform:uppercase;letter-spacing:-.01em;text-wrap:balance}
-h2{font-family:var(--display);font-weight:800;font-size:clamp(36px,7.5vw,56px);line-height:.95;margin:0;text-transform:uppercase;text-wrap:balance}
+h1{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(66px,17vw,150px);line-height:.84;margin:0;text-transform:uppercase;letter-spacing:-.01em;text-wrap:balance}
+h2{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:clamp(36px,7.5vw,56px);line-height:.95;margin:0;text-transform:uppercase;text-wrap:balance}
 h3{font-family:var(--ui);text-wrap:balance}
 .lede{font-size:19px;max-width:62ch;margin:0}
 .sec{padding-block:48px 8px;display:grid;gap:20px}
@@ -52,7 +52,7 @@ h3{font-family:var(--ui);text-wrap:balance}
 .more:focus-visible,.back:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 
 /* timeline */
-.year{font-family:var(--display);font-weight:800;font-size:46px;color:var(--accent);margin:26px 0 4px;line-height:1}
+.year{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:46px;color:var(--accent);margin:26px 0 4px;line-height:1}
 .tl{position:relative;display:grid;gap:14px}
 .rail{position:absolute;left:96px;top:0;bottom:0;width:2px;background:var(--line)}
 .rail b{display:block;width:100%;background:var(--accent);height:0}

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rota Curitiba em ícones</title>
+<meta name="description" content="Lula, Lulinha e a Lava Jato em uma tela: o placar dos 11 processos, as penas anuladas, os votos do STF e o que pesa contra o PT, com o mesmo critério.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fcarvalhodev.github.io/rotas/visual/visual.css">
+<style>
+:root{--accent:#2f6b4f;--hero:#24553e}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent:#6cc79a;--hero:#24553e}}
+:root[data-theme="dark"]{--accent:#6cc79a;--hero:#24553e}
+.hero{background:var(--hero);border-color:var(--hero)}.hero .go a{color:var(--hero)}
+</style>
+</head><body>
+<style>/* barra comum das Rotas */.rotas-bar{border-bottom:1px solid var(--line);background:var(--bg);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}.rotas-bar>div{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}.rotas-bar a{color:var(--muted);text-decoration:none;padding-block:2px;border-bottom:2px solid transparent}.rotas-bar a:hover{color:var(--ink)}.rotas-bar a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}.rotas-bar .rb-home{color:var(--accent);font-weight:600}.rv-btn{display:inline-flex;align-items:center;gap:8px;justify-self:start;font-family:var(--ui,system-ui);font-weight:800;font-size:16px;letter-spacing:.02em;text-decoration:none;color:var(--paper,#fff);background:var(--accent);padding:10px 16px;border-radius:999px;box-shadow:0 2px 0 rgba(0,0,0,.15)}.rv-btn:hover{filter:brightness(1.08)}.rv-btn:focus-visible{outline:3px solid var(--ink);outline-offset:2px}.rotas-bar a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}</style><style>/* padrão das Rotas: formato detalhado */body{font-size:17px;line-height:1.6}h1{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(60px,15vw,140px);line-height:.86;text-transform:uppercase;overflow-wrap:anywhere}h2{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:clamp(34px,7vw,52px);line-height:.95;text-transform:uppercase}</style><nav class="rotas-bar" aria-label="Rotas"><div><a class="rb-home" href="https://fcarvalhodev.github.io/rotas/">Rotas</a><a href="https://fcarvalhodev.github.io/rota-washington/">Washington</a><a href="https://fcarvalhodev.github.io/rota-master/">Master</a><a href="https://fcarvalhodev.github.io/rota-curitiba/" aria-current="page">Curitiba</a><a href="https://fcarvalhodev.github.io/rota-da-fe/">Fé</a><a href="https://fcarvalhodev.github.io/rota-esplanada/">Esplanada</a><a href="https://fcarvalhodev.github.io/rota-itamaraty/">Itamaraty</a><a href="https://fcarvalhodev.github.io/rota-da-picanha/">Picanha</a><a href="https://fcarvalhodev.github.io/rota-do-ibge/">IBGE</a><a href="https://fcarvalhodev.github.io/rota-velho-chico/">Velho Chico</a><a href="https://fcarvalhodev.github.io/rota-do-tesouro/">Tesouro</a><a href="https://fcarvalhodev.github.io/rota-rouanet/">Rouanet</a><a href="https://fcarvalhodev.github.io/rota-dos-ventos/">Ventos</a></div></nav>
+
+
+<main class="rv" id="rv" aria-label="Rota Curitiba em ícones"></main>
+<script>
+window.RV_DATA={
+ kicker:"Rota Curitiba · em ícones",
+ title:"Lula foi inocentado?",
+ answer:"Foi condenado, ficou <b>580 dias preso</b> e teve as condenações <b>anuladas</b>. Anulação não é absolvição: só <b>3 de 11</b> casos terminaram com absolvição no mérito.",
+ heroIcons:["iso-martelo","iso-doc","iso-cadeado","iso-casa","iso-governo","iso-relogio","iso-lupa","iso-urna","iso-cedula-real","iso-escudo"],
+ full:"index.html",
+ updated:"Fatos até 10 de outubro de 2026 · atualizado em 12 de outubro de 2026 · ícones próprios e Tabler Icons (MIT)",
+ cards:[
+  {type:"hero",span:"s4",rows:2},
+  {type:"iso",span:"s8",label:"As 11 ações penais mais conhecidas contra Lula, retrato de setembro de 2022",title:"Nenhuma condenação válida, mas só 3 absolvições no mérito",size:30,
+   rows:[
+    {name:"Absolvido no mérito: Cerveró, Quadrilhão do PT, Zelotes",icon:"iso-doc",n:3,value:"3",color:"var(--ok)"},
+    {name:"Anulado: triplex, sítio de Atibaia",icon:"iso-doc",n:2,value:"2",color:"var(--b)"},
+    {name:"Arquivado ou prescrito: Costa Rica",icon:"iso-doc",n:1,value:"1",color:"var(--d)"},
+    {name:"Suspenso ou trancado: Gripen, Instituto Lula (2), Guiné Equatorial, BNDES e Angola",icon:"iso-doc",n:5,value:"5",color:"var(--a)"},
+    {name:"Condenações válidas",icon:"iso-doc",n:0,ghost:11,value:"0 de 11"}],
+   key:{icon:"iso-doc",text:"1 ação penal"},
+   text:"Anulado, arquivado ou suspenso quer dizer que a Justiça não decidiu se ele cometeu o crime. É um retrato de 2022, não de todos os processos hoje.",
+   src:[["CNN Brasil","https://www.cnnbrasil.com.br/politica/fatos-primeiro-livre-para-disputar-a-eleicao-lula-nao-foi-inocentado-de-todas-as-acusacoes/"],["Aos Fatos","https://www.aosfatos.org/noticias/o-que-e-falso-e-o-que-e-fato-em-declaracoes-de-lula-sobre-absolvicoes-na-onu-e-na-justica/"],["Poder360","https://www.poder360.com.br/justica/lula-diz-que-foi-absolvido-mas-segue-com-problemas-na-justica/"]]},
+  {type:"iso",span:"s4",label:"STF, 2021: Moro foi parcial?",title:"O STF disse que sim, duas vezes",size:26,
+   rows:[
+    {name:"2ª Turma, março",value:"3 a 2",parts:[{icon:"iso-martelo",n:3,color:"var(--accent)"},{icon:"iso-martelo",n:2,color:"var(--d)"}]},
+    {name:"Plenário, junho",value:"7 a 4",parts:[{icon:"iso-martelo",n:7,color:"var(--accent)"},{icon:"iso-martelo",n:4,color:"var(--d)"}]}],
+   key:[{icon:"iso-martelo",text:"1 voto: Moro parcial",color:"var(--accent)"},{icon:"iso-martelo",text:"1 voto contra",color:"var(--d)"}],
+   text:"Antes, Fachin anulou as ações de Curitiba por outro motivo: a vara não era a certa.",
+   src:[["Migalhas","https://www.migalhas.com.br/quentes/347494/stf-moro-foi-parcial-ao-condenar-lula"],["STF: suspeição","https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=462854&ori=1"],["Poder360","https://www.poder360.com.br/governo/da-prisao-ao-planalto-lula-era-preso-ha-exatos-5-anos"]]},
+  {type:"iso",span:"s4",label:"O caso Lulinha",title:"Nunca condenado; três inquéritos abertos",size:26,
+   rows:[
+    {name:"Condenações",icon:"iso-doc",n:0,value:"0"},
+    {name:"Investigação arquivada (Gamecorp e Oi)",icon:"iso-doc",n:1,value:"1",color:"var(--d)"},
+    {name:"Inquéritos abertos no STF, 2026",icon:"iso-lupa",n:3,value:"3",color:"var(--b)"},
+    {name:"Cobrança da Receita, contestada",icon:"iso-lupa",n:1,value:"R$ 10 mi",color:"var(--b)"}],
+   key:[{icon:"iso-doc",text:"1 caso encerrado",color:"var(--d)"},{icon:"iso-lupa",text:"1 caso Em aberto",color:"var(--b)"}],
+   text:"Nenhum dos inquéritos trata do Banco Master. “Dono da Friboi” é boato falso.",
+   src:[["Página do Lulinha","lulinha.html"],["Poder360: arquivamento","https://www.poder360.com.br/lava-jato/juiza-arquiva-investigacao-da-lava-jato-contra-filho-de-lula/"],["Revista Cenarium","https://revistacenarium.com.br/understanding-the-investigations-authorized-by-the-stf-against-lulinha/"],["Correio","https://www.correio24horas.com.br/politica/quem-e-lulinha-filho-de-lula-teve-o-sigilo-bancario-quebrado-por-decisao-da-cpmi-do-inss-0326"]]},
+  {type:"iso",span:"s6",label:"Penas aplicadas antes da anulação",title:"Penas de até 17 anos; 580 dias de prisão",size:20,
+   rows:[
+    {head:"Triplex"},
+    {name:"Moro, 2017",icon:"iso-cadeado",n:9.5,value:"9 anos e 6 meses",color:"var(--accent)"},
+    {name:"TRF-4, 2018",icon:"iso-cadeado",n:12.08,value:"12 anos e 1 mês",color:"var(--accent)"},
+    {name:"STJ, 2019",icon:"iso-cadeado",n:8.83,value:"8 anos e 10 meses",color:"var(--accent)"},
+    {head:"Sítio de Atibaia"},
+    {name:"Gabriela Hardt, 2019",icon:"iso-cadeado",n:12.92,value:"12 anos e 11 meses",color:"var(--accent)"},
+    {name:"TRF-4",icon:"iso-cadeado",n:17,value:"17 anos",color:"var(--accent)"},
+    {head:"Prisão de verdade"},
+    {name:"Abr. 2018 a nov. 2019",icon:"iso-cadeado",n:1.59,value:"580 dias",color:"var(--b)"}],
+   key:{icon:"iso-cadeado",text:"1 ano"},
+   text:"O STF anulou as duas condenações em 2021.",
+   src:[["Página Linha do tempo","linha-do-tempo.html"],["Poder360","https://www.poder360.com.br/governo/da-prisao-ao-planalto-lula-era-preso-ha-exatos-5-anos"],["Agência Brasil: STJ","https://agenciabrasil.ebc.com.br/justica/noticia/2019-04/maioria-do-stj-decide-reduzir-pena-do-ex-presidente-lula"]]},
+  {type:"iso",span:"s6",label:"O triplex, em milhões de reais",title:"Não era dinheiro na conta: era o apartamento",size:22,
+   rows:[
+    {name:"Benefícios da OAS de que foi acusado (apartamento e reforma)",icon:"iso-casa",n:3.7,value:"R$ 3,7 mi",color:"var(--accent)"},
+    {name:"Bens bloqueados por Moro para ressarcir a Petrobras",icon:"iso-cedula-real",n:16,value:"cerca de R$ 16 mi",color:"var(--d)"},
+    {name:"dos quais, em contas bancárias",icon:"iso-cedula-real",n:.61,value:"R$ 606,7 mil",color:"var(--d)"}],
+   key:[{icon:"iso-casa",text:"R$ 1 milhão em benefícios",color:"var(--accent)"},{icon:"iso-cedula-real",text:"R$ 1 milhão em bens"}],
+   text:"A defesa sempre disse que o imóvel era da OAS. A acusação se apoiou numa reportagem de 2010 e no depoimento de Léo Pinheiro.",
+   src:[["Folha Vitória","https://www.folhavitoria.com.br/politica/entenda-o-caso-triplex-em-que-lula-foi-condenado/"],["Agência Brasil","https://agenciabrasil.ebc.com.br/justica/noticia/2019-04/maioria-do-stj-decide-reduzir-pena-do-ex-presidente-lula"]]},
+  {type:"iso",span:"s6",label:"O que pesa contra, com o mesmo critério",title:"A corrupção na Petrobras existiu",size:22,
+   rows:[
+    {head:"Petrobras, balanço de 2014"},
+    {name:"Perdas com desvios reconhecidas",icon:"iso-cedula-real",n:12.4,value:"R$ 6,2 bi",color:"var(--b)"},
+    {head:"Odebrecht, acordo de 2016"},
+    {name:"Propina paga em vários países",icon:"iso-cedula-dolar",n:3.15,value:"US$ 788 mi",color:"var(--b)"},
+    {name:"Multas, com a Braskem",icon:"iso-cedula-dolar",n:14,value:"US$ 3,5 bi",color:"var(--d)"}],
+   key:[{icon:"iso-cedula-real",text:"R$ 500 milhões",color:"var(--b)"},{icon:"iso-cedula-dolar",text:"US$ 250 milhões",color:"var(--b)"}],
+   text:"A confissão da Odebrecht continua de pé. Ela não diz, sozinha, que Lula recebeu propina.",
+   src:[["Congresso em Foco: Petrobras","https://www.congressoemfoco.com.br/noticias/petrobras-perde-r-62-bilhoes-com-corrupcao/"],["Departamento de Justiça dos EUA","https://www.justice.gov/opa/pr/odebrecht-and-braskem-plead-guilty-and-agree-pay-least-35-billion-global-penalties-resolve"]]},
+  {type:"iso",span:"s6",label:"Políticos investigados e condenados",title:"Vários partidos no esquema; o PT no mensalão",size:20,
+   rows:[
+    {head:"1ª lista da Lava Jato no STF, 2015: 47 nomes"},
+    {name:"PP",icon:"iso-pessoa",n:32,value:"32",color:"var(--d)"},
+    {name:"PMDB",icon:"iso-pessoa",n:7,value:"7",color:"var(--d)"},
+    {name:"PT",icon:"iso-pessoa",n:6,value:"6",color:"var(--d)"},
+    {name:"Demais nomes",icon:"iso-pessoa",n:2,value:"2",color:"var(--d)"},
+    {head:"Mensalão, STF, 2012"},
+    {name:"Cúpula do PT condenada: Dirceu, Genoino, Delúbio",icon:"iso-pessoa",n:3,value:"3",color:"var(--b)"}],
+   key:[{icon:"iso-pessoa",text:"1 político investigado"},{icon:"iso-pessoa",text:"1 condenado",color:"var(--b)"}],
+   text:"Lula não foi denunciado no mensalão. Estar na lista é ser investigado, não condenado.",
+   src:[["Congresso em Foco: lista de 2015","https://www.congressoemfoco.com.br/noticia/48544/quase-metade-do-pp-sera-investigado-veja-a-distribuicao-por-partido"],["Congresso em Foco: mensalão","https://www.congressoemfoco.com.br/noticia/67766/stf-dirceu-genoino-e-delubio-condenados-por-corrupcao"]]},
+  {type:"flow",span:"s6",label:"De Curitiba ao Planalto",title:"Da prisão à posse",
+   steps:[
+    {icon:"iso-martelo",name:"Moro condena",sub:"12 jul. 2017"},
+    {icon:"iso-cadeado",name:"Preso na PF",sub:"7 abr. 2018"},
+    {icon:"iso-relogio",name:"Solto",sub:"8 nov. 2019, após 580 dias"},
+    {icon:"iso-x",name:"STF anula",sub:"8 mar. 2021",hot:true},
+    {icon:"iso-governo",name:"Posse",sub:"1º jan. 2023"}],
+   text:"Refeitos em Brasília, o triplex prescreveu e a denúncia do sítio foi rejeitada.",
+   src:[["Poder360","https://www.poder360.com.br/governo/da-prisao-ao-planalto-lula-era-preso-ha-exatos-5-anos"],["CNN Brasil","https://www.cnnbrasil.com.br/politica/fatos-primeiro-livre-para-disputar-a-eleicao-lula-nao-foi-inocentado-de-todas-as-acusacoes/"]]},
+  {type:"iso",span:"s6",label:"Onde a prova termina",title:"O que está comprovado e o que nenhuma decisão afirmou",size:30,
+   rows:[
+    {name:"Comprovado",icon:"iso-check",n:5,value:"5 pontos",color:"var(--ok)"},
+    {name:"Nenhuma decisão afirmou",icon:"iso-x",n:3,value:"3 pontos",color:"var(--b)"}],
+   key:[{icon:"iso-check",text:"1 ponto comprovado",color:"var(--ok)"},{icon:"iso-x",text:"1 ponto que nenhuma decisão afirmou",color:"var(--b)"}],
+   text:"Comprovado: condenações anuladas; Moro parcial; a corrupção na Petrobras existiu. Nenhuma decisão afirmou: que Lula provou inocência no mérito, que as provas foram forjadas ou que ele recebeu propina.",
+   src:[["Página completa: onde a prova termina","index.html#h-against"]]},
+  {type:"verdicts",span:"s12",label:"É verdade?",
+   items:[["u","“Lula é o maior ladrão do país.”"],["u","“Lula roubou o dinheiro do povo.”"],["m","“O PT é o culpado pela corrupção na Petrobras.”"],["m","“Lula foi absolvido em todos os processos.”"],["m","“Lula é ex-presidiário condenado em três instâncias.”"],["f","“A ONU absolveu Lula.”"],["m","“Nunca acharam o dinheiro na conta do Lula.”"],["m","“As provas contra Lula foram forjadas.”"],["m","“A Lava Jato foi só uma armação contra o Lula.”"],["m","“As condenações caíram por tecnicalidade, mas ele é culpado.”"],["f","“A delação de Palocci provou tudo.”"]],
+   src:[["Página completa: É verdade?","index.html#h-myth"]]}
+ ]};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://fcarvalhodev.github.io/rotas/visual/icons.js"></script>
+<script src="https://fcarvalhodev.github.io/rotas/visual/visual.js"></script>
+</body></html>

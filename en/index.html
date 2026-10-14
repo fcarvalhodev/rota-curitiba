@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Curitiba Route</title>
+<meta name="description" content="What Lula and Lulinha were accused of, what the courts decided and what remains, case by case, with sources.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../estilo.css">
+<style>
+:root{--c-lula:#c0392b;--c-lulinha:#a35a12;--c-lava:#1f5bb5;--c-stf:#7a2a3d;--c-pt:#56625a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--c-lula:#f2796c;--c-lulinha:#e0a25a;--c-lava:#78a8f2;--c-stf:#e0899c;--c-pt:#9aa89f}}
+:root[data-theme="dark"]{--c-lula:#f2796c;--c-lulinha:#e0a25a;--c-lava:#78a8f2;--c-stf:#e0899c;--c-pt:#9aa89f}
+
+/* hero: the route as a transit line. Horizontal on wide screens, vertical on phones. */
+.hero{padding-block:40px 24px;display:grid;gap:22px}
+.routebox{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:22px 14px 16px;overflow:hidden}
+.metro{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0}
+.metro li{position:relative;display:grid;justify-items:center;text-align:center;gap:4px;padding-inline:4px}
+.metro li::after{content:"";position:absolute;top:11px;left:50%;width:100%;height:6px;background:var(--ink);z-index:0}
+.metro li:last-child::after{display:none}
+.metro li.jail::after{background:var(--stamp)}
+.metro .stn{width:28px;height:28px;border-radius:50%;background:var(--paper);border:5px solid var(--ink);position:relative;z-index:1}
+.metro li.jail .stn,.metro li.free .stn{border-color:var(--stamp)}
+.metro li.win .stn{border-color:var(--accent)}
+.metro .code{font-family:var(--mono);font-size:13px;font-weight:500;margin-top:4px}
+.metro .what{font-family:var(--ui);font-weight:700;font-size:14px;line-height:1.15}
+.metro .when{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.metro .dur{display:none;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--stamp)}
+.days{position:absolute;left:calc(100%/7*2.5);width:calc(100%/7*2);top:-6px;text-align:center;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--stamp);text-transform:uppercase}
+.stamp{position:absolute;left:3%;top:30%;transform:rotate(-9deg);font-family:var(--display);font-stretch:62%;font-weight:800;font-size:clamp(30px,6.5vw,58px);letter-spacing:.08em;color:var(--stamp);border:4px solid var(--stamp);padding:0 14px;border-radius:4px;opacity:.85;pointer-events:none;mix-blend-mode:multiply;animation:stamp .45s 1s cubic-bezier(.2,1.6,.4,1) both;line-height:1.1}
+.stamp small{display:block;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-align:center;padding-bottom:4px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .stamp{mix-blend-mode:normal}}
+:root[data-theme="dark"] .stamp{mix-blend-mode:normal}
+@keyframes stamp{from{transform:rotate(-9deg) scale(1.6)}to{transform:rotate(-9deg) scale(1)}}
+@media (max-width:640px){
+  .metro{grid-template-columns:1fr;gap:14px}
+  .metro li{grid-template-columns:28px 1fr;justify-items:start;text-align:left;column-gap:14px;row-gap:0}
+  .metro li .stn{grid-row:1/4}
+  .metro li::after{top:28px;left:11px;width:6px;height:calc(100% + 14px - 28px)}
+  .metro .code{margin-top:0}
+  .days{display:none}
+  .metro .dur{display:block;grid-column:2}
+  .stamp{left:auto;right:6%;top:10%}
+}
+
+/* scoreboard */
+.score{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:22px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:18px}
+.zero{display:grid;gap:2px}
+.zero b{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:110px;line-height:.85;color:var(--accent)}
+.zero span{font-family:var(--ui);font-weight:600;font-size:16px;line-height:1.25}
+.zero small{font-family:var(--ui);color:var(--muted);font-size:13px}
+.units{display:grid;gap:10px;min-width:0}
+.units .row{display:flex;gap:2px;position:relative}
+.unit{flex:1;height:46px;background:var(--o);border-radius:4px;cursor:pointer;outline:none;transition:opacity .2s}
+.unit:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.units .row:hover .unit:not(:hover){opacity:.5}
+.ulegend{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:var(--ui);font-size:14px}
+.ulegend span{display:inline-flex;align-items:center;gap:7px}
+.ulegend i{width:12px;height:12px;border-radius:3px;background:var(--o)}
+.utip{font-family:var(--ui);font-size:14px;min-height:42px;color:var(--muted);margin:0}
+.utip b{color:var(--ink)}
+@media (max-width:640px){.score{grid-template-columns:1fr}.zero b{font-size:90px}}
+
+/* case list (collapsible) */
+.case-d{border-bottom:1px solid var(--line)}
+.case-d summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 4px;font-family:var(--ui)}
+.case-d summary::-webkit-details-marker{display:none}
+.case-d summary i{width:12px;height:12px;border-radius:3px;background:var(--o)}
+.case-d summary b{font-weight:650;font-size:16px}
+.case-d summary span{font-size:13px;color:var(--muted)}
+.case-d summary span::after{content:" +";font-family:var(--mono)}
+.case-d[open] summary span::after{content:" −"}
+.case-d summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.case-d .case{margin-bottom:12px}
+.cases{border-top:1px solid var(--line);gap:0}
+.sub{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:30px;text-transform:uppercase;margin:12px 0 0;line-height:1}
+.par{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+
+/* case table */
+.cases{display:grid;gap:10px}
+.case{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--o);border-radius:4px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:hidden}
+.case>div{padding:14px 16px;display:grid;gap:6px;align-content:start;min-width:0}
+.case>div+div{border-left:1px solid var(--line)}
+.case .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.case h3{margin:0;font-size:18px;line-height:1.2}
+.case p{margin:0;font-size:15px;line-height:1.5}
+.case .out{display:inline-flex;align-items:center;gap:7px;font-family:var(--ui);font-weight:700;font-size:15px}
+.case .out i{width:11px;height:11px;border-radius:3px;background:var(--o)}
+@media (max-width:720px){.case{grid-template-columns:1fr}.case>div+div{border-left:0;border-top:1px solid var(--line)}}
+
+/* triplex explainer */
+.xp{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.xp article{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:16px;display:grid;gap:8px;align-content:start}
+.xp .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.xp h3{margin:0;font-size:18px;line-height:1.25}
+.xp p{margin:0;font-size:16px}
+.callout{background:var(--accent-soft);border:1px solid var(--accent);border-radius:4px;padding:16px 18px;display:grid;gap:6px}
+.callout h3{margin:0;font-size:18px}
+.callout p{margin:0}
+
+/* odebrecht x lula */
+.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;background:var(--paper);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.split>div{padding:16px 18px;display:grid;gap:8px;align-content:start;min-width:0}
+.split>div+div{border-left:1px solid var(--line)}
+.split .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.split h3{margin:0;font-size:19px;line-height:1.2}
+.split ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:15px}
+.split p{margin:0;font-size:15px}
+@media (max-width:640px){.split{grid-template-columns:1fr}.split>div+div{border-left:0;border-top:1px solid var(--line)}}
+
+/* why it fell */
+.steps{display:grid;border-top:1px solid var(--line)}
+.steps .row{display:grid;grid-template-columns:170px 1fr;gap:16px;padding-block:14px;border-bottom:1px solid var(--line)}
+.steps strong{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);padding-top:3px}
+.steps p{margin:0}
+.steps .src{margin-top:6px}
+@media (max-width:620px){.steps .row{grid-template-columns:1fr;gap:4px}}
+
+/* parallel page + filters */
+.par a{text-decoration:none;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:16px 18px;display:grid;gap:6px;transition:border-color .2s,transform .2s}
+.par a:hover{border-color:var(--accent);transform:translateY(-2px)}
+.par a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.par .n{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.par strong{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:34px;line-height:1;text-transform:uppercase}
+.par .d{font-family:var(--ui);font-size:15px;color:var(--muted)}
+
+/* myths */
+.myths{display:grid;gap:12px}
+.myth{background:var(--paper);border:1px solid var(--line);border-radius:4px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);overflow:hidden}
+.myth .say{padding:16px;border-right:1px solid var(--line);display:grid;gap:8px;align-content:start}
+.myth .say q{font-family:var(--display);font-stretch:66%;font-weight:600;font-size:23px;line-height:1.1;quotes:"“" "”"}
+.myth .say small{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.myth .is{padding:16px;display:grid;gap:8px;align-content:start}
+.myth .is p{margin:0;font-size:16px}
+@media (max-width:640px){.myth{grid-template-columns:1fr}.myth .say{border-right:0;border-bottom:1px solid var(--line)}}
+</style>
+<style>.ev.unproven{background:var(--open-soft);color:var(--open)}</style>
+</head><body>
+
+
+<style>/* barra comum das Rotas */.rotas-bar .rb-lang{margin-left:auto;color:var(--accent);font-weight:600}.rotas-bar{border-bottom:1px solid var(--line);background:var(--bg);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}.rotas-bar>div{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}.rotas-bar a{color:var(--muted);text-decoration:none;padding-block:2px;border-bottom:2px solid transparent}.rotas-bar a:hover{color:var(--ink)}.rotas-bar a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}.rotas-bar .rb-home{color:var(--accent);font-weight:600}.rv-btn{display:inline-flex;align-items:center;gap:8px;justify-self:start;font-family:var(--ui,system-ui);font-weight:800;font-size:16px;letter-spacing:.02em;text-decoration:none;color:var(--paper,#fff);background:var(--accent);padding:10px 16px;border-radius:999px;box-shadow:0 2px 0 rgba(0,0,0,.15)}.rv-btn:hover{filter:brightness(1.08)}.rv-btn:focus-visible{outline:3px solid var(--ink);outline-offset:2px}.rotas-bar a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}</style><style>/* padrão das Rotas: formato detalhado */body{font-size:17px;line-height:1.6}h1{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(60px,15vw,140px);line-height:.86;text-transform:uppercase;overflow-wrap:anywhere}h2{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:clamp(34px,7vw,52px);line-height:.95;text-transform:uppercase}</style><nav class="rotas-bar" aria-label="Routes"><div><a class="rb-home" href="https://fcarvalhodev.github.io/rotas/en/">Routes</a><a href="https://fcarvalhodev.github.io/rota-washington/en/">Washington</a><a href="https://fcarvalhodev.github.io/rota-master/en/">Master</a><a href="https://fcarvalhodev.github.io/rota-curitiba/en/" aria-current="page">Curitiba</a><a href="https://fcarvalhodev.github.io/rota-da-fe/en/">Faith</a><a href="https://fcarvalhodev.github.io/rota-esplanada/en/">Esplanada</a><a href="https://fcarvalhodev.github.io/rota-itamaraty/en/">Itamaraty</a><a href="https://fcarvalhodev.github.io/rota-da-picanha/en/">Picanha</a><a href="https://fcarvalhodev.github.io/rota-do-ibge/en/">IBGE</a><a href="https://fcarvalhodev.github.io/rota-velho-chico/en/">Velho Chico</a><a href="https://fcarvalhodev.github.io/rota-do-tesouro/en/">Treasury</a><a href="https://fcarvalhodev.github.io/rota-rouanet/en/">Rouanet</a><a href="https://fcarvalhodev.github.io/rota-dos-ventos/en/">Winds</a><a href="https://fcarvalhodev.github.io/rota-do-algoritmo/en/">Algorithm</a><a class="rb-lang" href="../" hreflang="pt-BR" lang="pt-BR">PT</a></div></nav>
+<header class="wrap hero">
+  <div class="kicker">Dossier · Lula, Lulinha and Operation Car Wash · updated Oct 10, 2026</div>
+  <h1>Curitiba<br>Route</h1>
+  <div class="routebox" aria-label="Lula's route through Operation Car Wash">
+    <span class="days" aria-hidden="true">580 days in prison</span>
+    <ol class="metro">
+      <li><span class="stn"></span><span class="code">CWB</span><span class="what">Moro convicts</span><span class="when">Jul 12, 2017</span></li>
+      <li><span class="stn"></span><span class="code">POA</span><span class="what">TRF-4 upholds</span><span class="when">Jan 24, 2018</span></li>
+      <li class="jail"><span class="stn"></span><span class="code">CWB</span><span class="what">Prison at the Federal Police</span><span class="when">Apr 7, 2018</span><span class="dur">580 days in prison</span></li>
+      <li class="jail"><span class="stn"></span><span class="code">BSB</span><span class="what">STJ upholds</span><span class="when">Apr 23, 2019</span></li>
+      <li class="free"><span class="stn"></span><span class="code">CWB</span><span class="what">Release</span><span class="when">Nov 8, 2019</span></li>
+      <li class="win"><span class="stn"></span><span class="code">BSB</span><span class="what">Supreme Court annuls</span><span class="when">Mar 8, 2021</span></li>
+      <li class="win"><span class="stn"></span><span class="code">BSB</span><span class="what">Inauguration</span><span class="when">Jan 1, 2023</span></li>
+    </ol>
+    <div class="stamp" aria-hidden="true">Annulled<small>SUPREME COURT · MAR 2021</small></div>
+  </div>
+  <p class="lede">Lula was convicted, spent 580 days in prison and then had all his convictions annulled. This route shows, case by case, what he was accused of, what the courts decided and what remains. It also includes what weighs against him, with the same standard.</p>
+  <a class="rv-btn" href="visual.html"><span aria-hidden="true">📊</span> See the summary in icons</a>
+  <div class="legend">
+    <span><b class="ev doc">Documented</b> a ruling, record or public statement</span> <span><b class="ev open">Open</b> investigation under way, with no conclusion</span> <span><b class="ev alleg">Allegation</b> an account or accusation not yet proven</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="sec" aria-labelledby="h-score" style="padding-top:8px">
+    <h2 id="h-score">The scoreboard of the cases</h2>
+    <p class="sec-intro">The eleven best-known criminal cases against Lula, as of September 2022 according to CNN. Tap a block, or open the list below, to see each case.</p>
+    <div class="score">
+      <div class="zero"><b class="num">0</b><span>valid convictions in this snapshot</span><small>In the set of cases and the September 2022 snapshot below. Annulment is not acquittal on the merits.</small></div>
+      <div class="units">
+        <div class="row" id="units" role="list" aria-label="Eleven cases by outcome"></div>
+        <div class="ulegend" id="ulegend"></div>
+        <p class="utip" id="utip" aria-live="polite">Only 3 of the 11 cases ended in acquittal on the merits. The others were annulled, closed or suspended, without the courts saying whether he committed the crime.</p>
+      </div>
+    </div>
+    <div class="cases" id="cases"></div>
+    <div class="src"><a href="https://www.cnnbrasil.com.br/politica/fatos-primeiro-livre-para-disputar-a-eleicao-lula-nao-foi-inocentado-de-todas-as-acusacoes/" target="_blank" rel="noopener">CNN Brasil</a><a href="https://www.aosfatos.org/noticias/o-que-e-falso-e-o-que-e-fato-em-declaracoes-de-lula-sobre-absolvicoes-na-onu-e-na-justica/" target="_blank" rel="noopener">Aos Fatos</a><a href="https://www.poder360.com.br/justica/lula-diz-que-foi-absolvido-mas-segue-com-problemas-na-justica/" target="_blank" rel="noopener">Poder360</a></div>
+  </section>
+
+
+  <section class="sec" aria-labelledby="h-tx">
+    <h2 id="h-tx">The triplex, from the inside</h2>
+    <p class="sec-intro">This is the case that put Lula in prison. Understanding what he was accused of is what separates the arguments that hold up from those that do not.</p>
+    <div class="xp">
+      <article><span class="tag">The accusation</span><h3>R$3.7 million in benefits from OAS</h3><p>Federal prosecutors said Lula and Marisa Letícia were the real owners of a triplex apartment in Guarujá. The purchase and the renovation, including a private elevator, would have been bribes from the construction company OAS for Petrobras contracts.</p></article>
+      <article><span class="tag">The evidence cited</span><h3>A 2010 report and the owner of OAS</h3><p>Moro relied on a 2010 news report that already treated the property as the couple's, and on the testimony of Léo Pinheiro, the owner of OAS. The defense said Pinheiro was talking to get a plea deal.</p></article>
+      <article><span class="tag">The defense</span><h3>The apartment was never his</h3><p>Lula would only have been a potential customer, to whom the unit was offered in 2014 without him buying it. For the defense, the owner of the property was OAS.</p></article>
+    </div>
+    <div class="callout">
+      <h3>What about money in his account?</h3>
+      <p>The accusation was never about money deposited in Lula's account. It was the apartment and the renovation. When convicting him, Moro ordered about R$16 million in Lula's assets frozen, including R$606,700 in bank accounts, to compensate Petrobras. The point the defense always attacked was a different one: proof that the property was his.</p>
+    </div>
+    <div class="src"><a href="https://www.folhavitoria.com.br/politica/entenda-o-caso-triplex-em-que-lula-foi-condenado/" target="_blank" rel="noopener">Folha Vitória</a><a href="https://agenciabrasil.ebc.com.br/justica/noticia/2019-04/maioria-do-stj-decide-reduzir-pena-do-ex-presidente-lula" target="_blank" rel="noopener">Agência Brasil</a></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-fell">
+    <h2 id="h-fell">Why the convictions fell</h2>
+    <div class="steps">
+      <div class="row"><strong>Vaza Jato · Jun 2019</strong><div><p>The Intercept publishes conversations between Moro and prosecutor Deltan Dallagnol. They suggest the judge was guiding the prosecution and that Dallagnol had doubts about the evidence hours before the triplex charges. Moro said there was nothing irregular and criticized the hacking that obtained the messages.</p><div class="src"><a href="https://www.intercept.com.br/?p=286347" target="_blank" rel="noopener">Intercept</a><a href="https://www.migalhas.com.br/Quentes/17,MI304061,91041-Nao+tem+nada+ali+diz+Moro+sobre+vazamento+de+mensagens" target="_blank" rel="noopener">Migalhas · Moro's response</a></div></div></div>
+      <div class="row"><strong>Lack of jurisdiction · Mar 2021</strong><div><p>Justice Fachin rules that the Curitiba court had no jurisdiction to try Lula and annuls the four cases there. The full Supreme Court later confirms it. The cases would have to start over in Brasília.</p><div class="src"><a href="https://www.poder360.com.br/governo/da-prisao-ao-planalto-lula-era-preso-ha-exatos-5-anos" target="_blank" rel="noopener">Poder360</a></div></div></div>
+      <div class="row"><strong>Bias · Mar and Jun 2021</strong><div><p>The Supreme Court's 2nd Panel rules, 3 to 2, that Moro was biased. In June, the full court upholds the ruling 7 to 4. The ruling covers decisions in the affected cases; the validity of each piece of evidence depends on the scope of the rulings. It does not extend to any evidence from any body.</p><div class="src"><a href="https://www.migalhas.com.br/quentes/347494/stf-moro-foi-parcial-ao-condenar-lula" target="_blank" rel="noopener">Migalhas</a></div></div></div>
+      <div class="row"><strong>Statute of limitations · 2021–2022</strong><div><p>When restarted in Brasília, the Atibaia farm charges are rejected and the triplex case is closed because the statute of limitations ran out. Neither case was retried on the merits.</p><div class="src"><a href="https://www.cnnbrasil.com.br/politica/fatos-primeiro-livre-para-disputar-a-eleicao-lula-nao-foi-inocentado-de-todas-as-acusacoes/" target="_blank" rel="noopener">CNN Brasil</a></div></div></div>
+      <div class="row"><strong>UN · Apr 2022</strong><div><p>The UN Human Rights Committee concludes that Moro and the prosecutors violated Lula's right to an impartial judge, to the presumption of innocence and to privacy, and that barring his candidacy in 2018 was arbitrary. The committee did not rule on whether he committed the crimes.</p><div class="src"><a href="https://www.poder360.com.br/justica/onu-conclui-que-moro-foi-parcial-no-julgamento-de-lula/" target="_blank" rel="noopener">Poder360</a></div></div></div>
+      <div class="row"><strong>Odebrecht evidence · Sep 2023</strong><div><p>Justice Toffoli declares the evidence from Odebrecht's leniency agreement unusable, as it was contaminated, and calls Lula's imprisonment one of the country's greatest judicial errors. The table below separates what this changes for the company and what it changes for Lula.</p><div class="src"><a href="https://www.justice.gov/opa/pr/odebrecht-and-braskem-plead-guilty-and-agree-pay-least-35-billion-global-penalties-resolve" target="_blank" rel="noopener">US Department of Justice</a><a href="https://diariodonordeste.verdesmares.com.br/pontopoder/toffoli-anula-provas-da-odebrecht-e-diz-que-prisao-de-lula-na-lava-jato-foi-armacao-1.3414327" target="_blank" rel="noopener">Diário do Nordeste</a><a href="https://www.revistaoeste.com/politica/odebrecht-confessou-crimes-que-foram-anulados-por-toffoli/" target="_blank" rel="noopener">Revista Oeste</a></div></div></div>
+    </div>
+    <div class="split" aria-label="What belongs to Odebrecht and what belongs to Lula">
+      <div><span class="tag">The company</span><h3>What Odebrecht confessed</h3>
+        <p>In December 2016, in an agreement with Brazil, the US and Switzerland, it admitted:</p>
+        <ul><li>more than ten years of bribery and bid rigging, since 2001;</li><li>about US$788 million paid to officials and parties in several countries;</li><li>fines of at least US$3.5 billion, together with Braskem.</li></ul>
+        <p>That confession still stands. Toffoli's ruling did not erase it.</p>
+        <div class="src"><a href="https://www.justice.gov/opa/pr/odebrecht-and-braskem-plead-guilty-and-agree-pay-least-35-billion-global-penalties-resolve" target="_blank" rel="noopener">US Department of Justice</a></div></div>
+      <div><span class="tag">Lula</span><h3>What Lula was accused of using Odebrecht material</h3>
+        <ul><li>Donations to the Lula Institute as bribes: suspended in 2021.</li><li>Land for the Lula Institute: suspended in 2021.</li><li>BNDES credit line for works in Angola: case dismissed.</li><li>Renovations at the Atibaia farm, together with OAS: conviction annulled and charges rejected.</li></ul>
+        <p>None of these accusations ended in a valid conviction. The company's confession does not, by itself, say that Lula received bribes.</p>
+        <div class="src"><a href="https://www.cnnbrasil.com.br/politica/fatos-primeiro-livre-para-disputar-a-eleicao-lula-nao-foi-inocentado-de-todas-as-acusacoes/" target="_blank" rel="noopener">CNN Brasil</a><a href="https://www.poder360.com.br/justica/lula-diz-que-foi-absolvido-mas-segue-com-problemas-na-justica/" target="_blank" rel="noopener">Poder360</a></div></div>
+    </div>
+  </section>
+
+
+  <section class="sec" aria-labelledby="h-against">
+    <h2 id="h-against">Both sides</h2>
+    <p class="sec-intro">For the conclusion to be worth anything, it has to survive the best arguments against Lula. These are facts, not opinions.</p>
+    <div class="steps">
+      <div class="row"><strong>Three levels of court</strong><div><p>Before the annulment, the triplex conviction was upheld by the TRF-4 and, unanimously, by the STJ's 5th Panel, which only reduced the sentence. The annulment came on procedural grounds, not from a new assessment of the evidence.</p><div class="src"><a href="https://agenciabrasil.ebc.com.br/justica/noticia/2019-04/maioria-do-stj-decide-reduzir-pena-do-ex-presidente-lula" target="_blank" rel="noopener">Agência Brasil</a></div></div></div>
+      <div class="row"><strong>Merits</strong><div><p>Only 3 of the 11 cases ended in acquittal on the merits. Jurists disagree on whether annulment and the statute of limitations are equivalent to acquittal. In technical language, they are not.</p><div class="src"><a href="https://www.aosfatos.org/noticias/o-que-e-falso-e-o-que-e-fato-em-declaracoes-de-lula-sobre-absolvicoes-na-onu-e-na-justica/" target="_blank" rel="noopener">Aos Fatos</a></div></div></div>
+      <div class="row"><strong>Petrobras</strong><div><p>The corruption at the state oil company existed. In 2015, Petrobras recognized R$6.2 billion in losses from embezzlement in its 2014 accounts. Odebrecht confessed to paying bribes, as the table above shows.</p><div class="src"><a href="https://www.congressoemfoco.com.br/noticias/petrobras-perde-r-62-bilhoes-com-corrupcao/" target="_blank" rel="noopener">Congresso em Foco</a></div></div></div>
+      <div class="row"><strong>Mensalão</strong><div><p>In 2012, the Supreme Court convicted José Dirceu, José Genoino and Delúbio Soares, from the PT's leadership, of active corruption. Lula was not charged in that case.</p><div class="src"><a href="https://www.congressoemfoco.com.br/noticia/67766/stf-dirceu-genoino-e-delubio-condenados-por-corrupcao" target="_blank" rel="noopener">Congresso em Foco</a></div></div></div>
+      <div class="row"><strong>Master case</strong><div><p>Lula received Daniel Vorcaro at the presidential palace in December 2024, off the official schedule. There is no investigation against him.</p><a class="more" href="https://fcarvalhodev.github.io/rota-master/en/">See on the Master Route →</a></div></div>
+    </div>
+    <h3 class="sub">Where the proof ends</h3>
+    <div class="verdict">
+      <div class="col yes">
+        <h3>What is proven</h3>
+        <ul>
+          <li>The Curitiba convictions were annulled. In the September 2022 snapshot, there was no valid conviction in the 11 cases presented; this is not an update of every case in 2026.</li>
+          <li>The Supreme Court declared Moro biased and the Curitiba court without jurisdiction to try him.</li>
+          <li>Lula spent 580 days in prison for a conviction that was later annulled.</li>
+          <li>In three cases, Lula was acquitted on the merits.</li>
+          <li>The corruption at Petrobras existed, and PT leaders were convicted in the mensalão.</li>
+        </ul>
+      </div>
+      <div class="col not">
+        <h3>What no ruling has stated</h3>
+        <ul>
+          <li>That Lula proved he was innocent on the merits of the triplex and the farm. The cases were annulled and ran out the statute of limitations.</li>
+          <li>That the evidence was forged. The rulings speak of bias, lack of jurisdiction and contaminated evidence.</li>
+          <li>That Lula received bribes. The conviction that said so no longer exists.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-myth">
+    <h2 id="h-myth">Is it true?</h2>
+    <p class="sec-intro">Common claims from both sides, compared with rulings and records.</p>
+    <div class="myths" id="myths"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-more">
+    <h2 id="h-more">To go further</h2>
+    <div class="par">
+      <a href="linha-do-tempo.html"><span class="n">Timeline · 2012–2026</span><strong>Timeline</strong><span class="d">Every milestone, from the mensalão to the 2026 runoff, with a filter by person.</span><span class="more">Open page →</span></a> <a href="lulinha.html"><span class="n">Parallel · Fábio Luís Lula da Silva</span><strong>The Lulinha case</strong><span class="d">Another story, on its own page: what was closed, what is open and what is rumor.</span><span class="more">Open page →</span></a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Facts gathered from news reports published up to October 10, 2026. The scoreboard reflects the situation in September 2022 according to CNN. Investigation is not conviction, and annulment is not acquittal on the merits.</p>
+    <p>Runoff: October 25, 2026.</p>
+  </footer>
+
+<section id="fontes-revisao" aria-labelledby="h-fontes-revisao" style="margin-block:32px;padding:20px;border:1px solid var(--line);border-radius:6px">
+<h2 id="h-fontes-revisao">Sources and limits of this reading</h2>
+<p>The 11-case panel is historical: September 2022. Annulment, statute of limitations, closure and acquittal have different meanings. The presumption of innocence and the absence of a valid conviction do not certify every historical narrative. The UN Committee examined procedural rights; it did not acquit him criminally.</p>
+<div class="src"><a href="https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=462854&ori=1" target="_blank" rel="noopener">Supreme Court: Moro's bias</a><a href="https://noticias.stf.jus.br/postsnoticias/ministro-gilmar-mendes-estende-suspeicao-de-moro-em-relacao-a-lula-a-mais-duas-acoes-penais/" target="_blank" rel="noopener">Supreme Court: scope in other cases</a><a href="https://juris.ohchr.org/casedetails/3115/en-Us" target="_blank" rel="noopener">UN: communication 2841/2016</a></div>
+<p style="font-size:14px"><a href="https://fcarvalhodev.github.io/rotas/en/metodologia.html">How we tell facts, allegations and interpretations apart</a> · Editorial review: October 10, 2026.</p>
+</section>
+</main>
+
+<script>
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const O={merito:["Acquitted on the merits","var(--o-merito)"],anulado:["Annulled","var(--o-anulado)"],arquivado:["Closed or time-barred","var(--o-arquivado)"],suspenso:["Suspended or dismissed","var(--o-suspenso)"]};
+const C=[
+ {o:"anulado",t:"Guarujá triplex",a:"Passive corruption and money laundering. R$3.7 million in benefits from OAS, in the apartment and its renovation.",d:"Moro convicted in 2017. The TRF-4 increased the sentence and the STJ reduced it, upholding the conviction. The Supreme Court annulled it in 2021.",f:"Restarted in Brasília, it was closed under the statute of limitations in January 2022."},
+ {o:"anulado",t:"Atibaia farm",a:"Corruption and money laundering. Renovations paid for by construction companies at a country house the family used.",d:"Judge Gabriela Hardt convicted in February 2019, with 12 years and 11 months. The TRF-4 increased it to 17 years. The Supreme Court annulled it in 2021.",f:"In August 2021, the Federal District court rejected the new charges because of the statute of limitations and lack of evidence."},
+ {o:"merito",t:"Cerveró's silence",a:"Obstruction of justice. Alleged purchase of the silence of a former Petrobras director.",d:"All defendants were acquitted in 2018 for insufficient evidence.",f:"Acquittal on the merits."},
+ {o:"merito",t:"The “PT gang” case",a:"Criminal organization to embezzle money from state companies.",d:"The Federal Court in the Federal District summarily acquitted on December 4, 2019.",f:"Acquittal on the merits: the facts described were not a crime."},
+ {o:"merito",t:"Zelotes · provisional measure",a:"Passive corruption in issuing a provisional measure.",d:"Acquittal for lack of evidence.",f:"Acquittal on the merits."},
+ {o:"arquivado",t:"Costa Rica",a:"Influence peddling.",d:"The 9th Federal Court of São Paulo closed it for lack of evidence and the statute of limitations.",f:"Arquivado."},
+ {o:"suspenso",t:"Gripen fighter jets",a:"Influence peddling, money laundering and criminal organization in the purchase of 36 Swedish fighter jets.",d:"Justice Lewandowski suspended the case in March 2022.",f:"Suspenso."},
+ {o:"suspenso",t:"Donations to the Lula Institute",a:"Odebrecht donations as bribes.",d:"Justice Lewandowski suspended it in 2021. The Odebrecht evidence was annulled in 2023.",f:"Suspenso."},
+ {o:"suspenso",t:"Lula Institute land",a:"Purchase of land by Odebrecht for the institute.",d:"Justice Lewandowski suspended it in 2021 and the 2nd Panel confirmed it in 2022.",f:"Suspenso."},
+ {o:"suspenso",t:"Equatorial Guinea",a:"Laundering of R$1 million.",d:"The TRF-3's 5th Panel dismissed the case in July 2021.",f:"Trancado."},
+ {o:"suspenso",t:"BNDES and Angola",a:"Influence peddling in a credit line for Odebrecht works in Angola.",d:"The 10th Federal Court of the Federal District dismissed the case.",f:"Trancado."}
+];
+/* scoreboard units, grouped by outcome */
+const order=["merito","anulado","arquivado","suspenso"];
+const sorted=[...C].sort((x,y)=>order.indexOf(x.o)-order.indexOf(y.o));
+const units=document.getElementById("units"),utip=document.getElementById("utip"),base=utip.innerHTML;
+sorted.forEach(c=>{const u=document.createElement("button");u.type="button";u.className="unit";u.style.setProperty("--o",O[c.o][1]);u.setAttribute("role","listitem");u.setAttribute("aria-label",`${c.t}: ${O[c.o][0]}`);
+  const show=()=>utip.innerHTML=`<b>${esc(c.t)}</b> · ${O[c.o][0]}. ${esc(c.f)}`;
+  u.addEventListener("mouseenter",show);u.addEventListener("focus",show);u.addEventListener("click",show);
+  u.addEventListener("mouseleave",()=>utip.innerHTML=base);units.appendChild(u)});
+document.getElementById("ulegend").innerHTML=order.map(k=>`<span style="--o:${O[k][1]}"><i></i>${O[k][0]} · ${C.filter(c=>c.o===k).length}</span>`).join("");
+document.getElementById("cases").innerHTML=sorted.map((c,i)=>`<details class="case-d" id="caso-${i}" style="--o:${O[c.o][1]}"><summary><i></i><b>${esc(c.t)}</b><span>${O[c.o][0]}</span></summary><div class="case"><div><span class="lab">What he was accused of</span><p>${esc(c.a)}</p></div><div><span class="lab">What the courts decided</span><p>${esc(c.d)}</p></div><div><span class="lab">What remains</span><span class="out"><i></i>${O[c.o][0]}</span><p>${esc(c.f)}</p></div></div></details>`).join("");
+units.querySelectorAll(".unit").forEach((u,i)=>u.addEventListener("click",()=>{const d=document.getElementById("caso-"+i);d.open=true;d.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"center"})}));
+
+
+/* myths */
+const M=[
+ ["Lula is the country's biggest thief.","Lula's opponents","unproven","The Curitiba convictions cited were annulled. That prevents treating them as valid convictions, without by itself proving that every accusation was historically false. The two convictions that existed were annulled, and the case that put him in prison was about an apartment, not public money in his account. \"Biggest thief\" is an accusation with no conviction and no measure.",[["Poder360","https://www.poder360.com.br/governo/da-prisao-ao-planalto-lula-era-preso-ha-exatos-5-anos"],["Folha Vitória","https://www.folhavitoria.com.br/politica/entenda-o-caso-triplex-em-que-lula-foi-condenado/"]]],
+ ["Lula stole the people's money.","Lula's opponents","unproven","The corruption at Petrobras happened and diverted billions, according to the company itself. But the cases presented contain no valid conviction recognizing such appropriation by Lula, in the historical snapshot cited. The accusations that said so were annulled, closed or suspended.",[["Congresso em Foco","https://www.congressoemfoco.com.br/noticias/petrobras-perde-r-62-bilhoes-com-corrupcao/"],["CNN Brasil","https://www.cnnbrasil.com.br/politica/fatos-primeiro-livre-para-disputar-a-eleicao-lula-nao-foi-inocentado-de-todas-as-acusacoes/"]]],
+ ["The PT is to blame for the corruption at Petrobras.","PT opponents","part","PT leaders were convicted in the mensalão, and PT members were among those investigated in Car Wash. But the scheme involved several parties: in the first list of politicians investigated at the Supreme Court, in 2015, the PP had 32 of the 47 names, the PMDB 7 and the PT 6.",[["Congresso em Foco · 2015 list","https://www.congressoemfoco.com.br/noticia/48544/quase-metade-do-pp-sera-investigado-veja-a-distribuicao-por-partido"],["Congresso em Foco · mensalão","https://www.congressoemfoco.com.br/noticia/67766/stf-dirceu-genoino-e-delubio-condenados-por-corrupcao"]]],
+ ["Lula was acquitted in every case.","Lula's supporters","part","In the September 2022 snapshot, there was no valid conviction in these 11 cases. Only 3 ended in acquittal on the merits. The others were annulled, closed, time-barred or suspended.",[["Aos Fatos","https://www.aosfatos.org/noticias/o-que-e-falso-e-o-que-e-fato-em-declaracoes-de-lula-sobre-absolvicoes-na-onu-e-na-justica/"]]],
+ ["Lula is an ex-convict convicted at three levels of court.","Lula's opponents","part","It is true that he was imprisoned and that the triplex conviction went through three levels. But the Supreme Court annulled the convictions, and they lost validity. The historical panel does not certify the current status of every case. Using this as if it were still valid is misleading.",[["Poder360","https://www.poder360.com.br/governo/da-prisao-ao-planalto-lula-era-preso-ha-exatos-5-anos"]]],
+ ["The UN acquitted Lula.","Lula's supporters","no","The Human Rights Committee has no power to acquit. It concluded that Lula's rights were violated, without ruling on whether there was a crime.",[["Aos Fatos","https://www.aosfatos.org/noticias/o-que-e-falso-e-o-que-e-fato-em-declaracoes-de-lula-sobre-absolvicoes-na-onu-e-na-justica/"],["Poder360","https://www.poder360.com.br/justica/onu-conclui-que-moro-foi-parcial-no-julgamento-de-lula/"]]],
+ ["They never found the money in Lula's account.","Lula's supporters","part","The accusation was never about money in his account. It was the apartment and the renovation, which the defense says were never his. The annulment removed the conviction's validity, without automatically deciding the historical ownership of the property or the merits of each allegation.",[["Folha Vitória","https://www.folhavitoria.com.br/politica/entenda-o-caso-triplex-em-que-lula-foi-condenado/"]]],
+ ["The evidence against Lula was forged.","Lula's supporters","part","The rulings cited here on bias and the validity of evidence do not allow concluding that every piece was forged or that none was manipulated. The Supreme Court declared Moro biased, the court without jurisdiction and the Odebrecht evidence unusable due to contamination.",[["Migalhas","https://www.migalhas.com.br/quentes/347494/stf-moro-foi-parcial-ao-condenar-lula"],["Diário do Nordeste","https://diariodonordeste.verdesmares.com.br/pontopoder/toffoli-anula-provas-da-odebrecht-e-diz-que-prisao-de-lula-na-lava-jato-foi-armacao-1.3414327"]]],
+ ["Car Wash was just a set-up against Lula.","Lula's supporters","part","The Supreme Court declared Moro biased in Lula's cases, and Toffoli called the imprisonment a set-up. But the corruption the operation investigated existed: Petrobras recognized R$6.2 billion in losses, and Odebrecht confessed to bribery.",[["Migalhas","https://www.migalhas.com.br/quentes/347494/stf-moro-foi-parcial-ao-condenar-lula"],["Congresso em Foco","https://www.congressoemfoco.com.br/noticias/petrobras-perde-r-62-bilhoes-com-corrupcao/"],["US Department of Justice","https://www.justice.gov/opa/pr/odebrecht-and-braskem-plead-guilty-and-agree-pay-least-35-billion-global-penalties-resolve"]]],
+ ["The convictions fell on a technicality, but he is guilty.","Lula's opponents","part","The annulment was indeed procedural: the court's jurisdiction and the judge's bias, decided by the full Supreme Court. But without a valid conviction there is no recognized guilt, and the cases were not retried on the merits.",[["Migalhas","https://www.migalhas.com.br/quentes/347494/stf-moro-foi-parcial-ao-condenar-lula"]]],
+ ["Palocci's plea deal proved everything.","Lula's opponents","no","In one of the inquiries opened from it, the Federal Police concluded that the information seemed to have come from internet searches and found no evidence.",[["Migalhas","https://www.migalhas.com.br/quentes/332077/em-mais-um-caso-pf-conclui-que-delacao-de-palocci-foi-invencao"]]]
+];
+const ML={unproven:"Not shown",no:"False",part:"Half true",doc:"True",open:"Open"};
+document.getElementById("myths").innerHTML=M.map(m=>`<article class="myth"><div class="say"><small>${m[1]}</small><q>${esc(m[0])}</q></div><div class="is"><span class="ev ${m[2]}" style="justify-self:start">${ML[m[2]]}</span><p>${esc(m[3])}</p><div class="src">${m[4].map(s=>`<a href="${s[1]}" target="_blank" rel="noopener">${s[0]}</a>`).join("")}</div></div></article>`).join("");
+</script>
+
+</body></html>

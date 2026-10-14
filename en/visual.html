@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Curitiba Route in icons</title>
+<meta name="description" content="Lula, Lulinha and Car Wash on one screen: the scoreboard of the 11 cases, the annulled sentences, the Supreme Court votes and what weighs against the PT, with the same standard.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fcarvalhodev.github.io/rotas/visual/visual.css">
+<style>
+:root{--accent:#2f6b4f;--hero:#24553e}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent:#6cc79a;--hero:#24553e}}
+:root[data-theme="dark"]{--accent:#6cc79a;--hero:#24553e}
+.hero{background:var(--hero);border-color:var(--hero)}.hero .go a{color:var(--hero)}
+</style>
+</head><body>
+<style>/* barra comum das Rotas */.rotas-bar .rb-lang{margin-left:auto;color:var(--accent);font-weight:600}.rotas-bar{border-bottom:1px solid var(--line);background:var(--bg);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}.rotas-bar>div{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}.rotas-bar a{color:var(--muted);text-decoration:none;padding-block:2px;border-bottom:2px solid transparent}.rotas-bar a:hover{color:var(--ink)}.rotas-bar a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}.rotas-bar .rb-home{color:var(--accent);font-weight:600}.rv-btn{display:inline-flex;align-items:center;gap:8px;justify-self:start;font-family:var(--ui,system-ui);font-weight:800;font-size:16px;letter-spacing:.02em;text-decoration:none;color:var(--paper,#fff);background:var(--accent);padding:10px 16px;border-radius:999px;box-shadow:0 2px 0 rgba(0,0,0,.15)}.rv-btn:hover{filter:brightness(1.08)}.rv-btn:focus-visible{outline:3px solid var(--ink);outline-offset:2px}.rotas-bar a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}</style><style>/* padrão das Rotas: formato detalhado */body{font-size:17px;line-height:1.6}h1{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(60px,15vw,140px);line-height:.86;text-transform:uppercase;overflow-wrap:anywhere}h2{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:clamp(34px,7vw,52px);line-height:.95;text-transform:uppercase}</style><nav class="rotas-bar" aria-label="Routes"><div><a class="rb-home" href="https://fcarvalhodev.github.io/rotas/en/">Routes</a><a href="https://fcarvalhodev.github.io/rota-washington/en/">Washington</a><a href="https://fcarvalhodev.github.io/rota-master/en/">Master</a><a href="https://fcarvalhodev.github.io/rota-curitiba/en/" aria-current="page">Curitiba</a><a href="https://fcarvalhodev.github.io/rota-da-fe/en/">Faith</a><a href="https://fcarvalhodev.github.io/rota-esplanada/en/">Esplanada</a><a href="https://fcarvalhodev.github.io/rota-itamaraty/en/">Itamaraty</a><a href="https://fcarvalhodev.github.io/rota-da-picanha/en/">Picanha</a><a href="https://fcarvalhodev.github.io/rota-do-ibge/en/">IBGE</a><a href="https://fcarvalhodev.github.io/rota-velho-chico/en/">Velho Chico</a><a href="https://fcarvalhodev.github.io/rota-do-tesouro/en/">Treasury</a><a href="https://fcarvalhodev.github.io/rota-rouanet/en/">Rouanet</a><a href="https://fcarvalhodev.github.io/rota-dos-ventos/en/">Winds</a><a href="https://fcarvalhodev.github.io/rota-do-algoritmo/en/">Algorithm</a><a class="rb-lang" href="../visual.html" hreflang="pt-BR" lang="pt-BR">PT</a></div></nav>
+
+
+<main class="rv" id="rv" aria-label="Curitiba Route in icons"></main>
+<script>
+window.RV_DATA={lang:"en",
+ kicker:"Curitiba Route · in icons",
+ title:"Was Lula cleared?",
+ answer:"He was convicted, spent <b>580 days in prison</b> and had his convictions <b>annulled</b>. Annulment is not acquittal: only <b>3 of 11</b> cases ended in acquittal on the merits.",
+ heroIcons:["iso-martelo","iso-doc","iso-cadeado","iso-casa","iso-governo","iso-relogio","iso-lupa","iso-urna","iso-cedula-real","iso-escudo"],
+ full:"index.html",
+ updated:"Facts through October 10, 2026 · updated October 12, 2026 · original icons and Tabler Icons (MIT)",
+ cards:[
+  {type:"hero",span:"s4",rows:2},
+  {type:"iso",span:"s8",label:"The 11 best-known criminal cases against Lula, September 2022 snapshot",title:"No valid convictions, but only 3 acquittals on the merits",size:30,
+   rows:[
+    {name:"Acquitted on the merits: Cerveró, PT gang, Zelotes",icon:"iso-doc",n:3,value:"3",color:"var(--ok)"},
+    {name:"Annulled: triplex, Atibaia farm",icon:"iso-doc",n:2,value:"2",color:"var(--b)"},
+    {name:"Closed or time-barred: Costa Rica",icon:"iso-doc",n:1,value:"1",color:"var(--d)"},
+    {name:"Suspended or dismissed: Gripen, Lula Institute (2), Equatorial Guinea, BNDES and Angola",icon:"iso-doc",n:5,value:"5",color:"var(--a)"},
+    {name:"Valid convictions",icon:"iso-doc",n:0,ghost:11,value:"0 of 11"}],
+   key:{icon:"iso-doc",text:"1 criminal case"},
+   text:"Annulled, closed or suspended means the courts did not decide whether he committed the crime. This is a 2022 snapshot, not every case today.",
+   src:[["CNN Brasil","https://www.cnnbrasil.com.br/politica/fatos-primeiro-livre-para-disputar-a-eleicao-lula-nao-foi-inocentado-de-todas-as-acusacoes/"],["Aos Fatos","https://www.aosfatos.org/noticias/o-que-e-falso-e-o-que-e-fato-em-declaracoes-de-lula-sobre-absolvicoes-na-onu-e-na-justica/"],["Poder360","https://www.poder360.com.br/justica/lula-diz-que-foi-absolvido-mas-segue-com-problemas-na-justica/"]]},
+  {type:"iso",span:"s4",label:"Supreme Court, 2021: was Moro biased?",title:"The Supreme Court said yes, twice",size:26,
+   rows:[
+    {name:"2nd Panel, March",value:"3 a 2",parts:[{icon:"iso-martelo",n:3,color:"var(--accent)"},{icon:"iso-martelo",n:2,color:"var(--d)"}]},
+    {name:"Full court, June",value:"7 a 4",parts:[{icon:"iso-martelo",n:7,color:"var(--accent)"},{icon:"iso-martelo",n:4,color:"var(--d)"}]}],
+   key:[{icon:"iso-martelo",text:"1 vote: Moro biased",color:"var(--accent)"},{icon:"iso-martelo",text:"1 vote against",color:"var(--d)"}],
+   text:"Before that, Fachin annulled the Curitiba cases for another reason: it was the wrong court.",
+   src:[["Migalhas","https://www.migalhas.com.br/quentes/347494/stf-moro-foi-parcial-ao-condenar-lula"],["Supreme Court: bias","https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=462854&ori=1"],["Poder360","https://www.poder360.com.br/governo/da-prisao-ao-planalto-lula-era-preso-ha-exatos-5-anos"]]},
+  {type:"iso",span:"s4",label:"The Lulinha case",title:"Never convicted; three open inquiries",size:26,
+   rows:[
+    {name:"Convictions",icon:"iso-doc",n:0,value:"0"},
+    {name:"Investigation closed (Gamecorp and Oi)",icon:"iso-doc",n:1,value:"1",color:"var(--d)"},
+    {name:"Inquiries open at the Supreme Court, 2026",icon:"iso-lupa",n:3,value:"3",color:"var(--b)"},
+    {name:"Federal Revenue claim, disputed",icon:"iso-lupa",n:1,value:"R$10 M",color:"var(--b)"}],
+   key:[{icon:"iso-doc",text:"1 case closed",color:"var(--d)"},{icon:"iso-lupa",text:"1 case Open",color:"var(--b)"}],
+   text:"None of the inquiries concerns Banco Master. “Owner of Friboi” is a false rumor.",
+   src:[["Lulinha page","lulinha.html"],["Poder360: closure","https://www.poder360.com.br/lava-jato/juiza-arquiva-investigacao-da-lava-jato-contra-filho-de-lula/"],["Revista Cenarium","https://revistacenarium.com.br/understanding-the-investigations-authorized-by-the-stf-against-lulinha/"],["Correio","https://www.correio24horas.com.br/politica/quem-e-lulinha-filho-de-lula-teve-o-sigilo-bancario-quebrado-por-decisao-da-cpmi-do-inss-0326"]]},
+  {type:"iso",span:"s6",label:"Sentences imposed before the annulment",title:"Sentences of up to 17 years; 580 days in prison",size:20,
+   rows:[
+    {head:"Triplex"},
+    {name:"Moro, 2017",icon:"iso-cadeado",n:9.5,value:"9 years and 6 months",color:"var(--accent)"},
+    {name:"TRF-4, 2018",icon:"iso-cadeado",n:12.08,value:"12 years and 1 month",color:"var(--accent)"},
+    {name:"STJ, 2019",icon:"iso-cadeado",n:8.83,value:"8 years and 10 months",color:"var(--accent)"},
+    {head:"Atibaia farm"},
+    {name:"Gabriela Hardt, 2019",icon:"iso-cadeado",n:12.92,value:"12 years and 11 months",color:"var(--accent)"},
+    {name:"TRF-4",icon:"iso-cadeado",n:17,value:"17 years",color:"var(--accent)"},
+    {head:"Actual imprisonment"},
+    {name:"Apr 2018 to Nov 2019",icon:"iso-cadeado",n:1.59,value:"580 days",color:"var(--b)"}],
+   key:{icon:"iso-cadeado",text:"1 year"},
+   text:"The Supreme Court annulled both convictions in 2021.",
+   src:[["Timeline page","linha-do-tempo.html"],["Poder360","https://www.poder360.com.br/governo/da-prisao-ao-planalto-lula-era-preso-ha-exatos-5-anos"],["Agência Brasil: STJ","https://agenciabrasil.ebc.com.br/justica/noticia/2019-04/maioria-do-stj-decide-reduzir-pena-do-ex-presidente-lula"]]},
+  {type:"iso",span:"s6",label:"The triplex, in millions of reais",title:"It was not money in his account: it was the apartment",size:22,
+   rows:[
+    {name:"OAS benefits he was accused of (apartment and renovation)",icon:"iso-casa",n:3.7,value:"R$3.7 M",color:"var(--accent)"},
+    {name:"Assets frozen by Moro to compensate Petrobras",icon:"iso-cedula-real",n:16,value:"about R$16 M",color:"var(--d)"},
+    {name:"of which, in bank accounts",icon:"iso-cedula-real",n:.61,value:"R$606,700",color:"var(--d)"}],
+   key:[{icon:"iso-casa",text:"R$1 million in benefits",color:"var(--accent)"},{icon:"iso-cedula-real",text:"R$1 million in assets"}],
+   text:"The defense always said the property belonged to OAS. The prosecution relied on a 2010 news report and Léo Pinheiro's testimony.",
+   src:[["Folha Vitória","https://www.folhavitoria.com.br/politica/entenda-o-caso-triplex-em-que-lula-foi-condenado/"],["Agência Brasil","https://agenciabrasil.ebc.com.br/justica/noticia/2019-04/maioria-do-stj-decide-reduzir-pena-do-ex-presidente-lula"]]},
+  {type:"iso",span:"s6",label:"What weighs against, with the same standard",title:"The corruption at Petrobras existed",size:22,
+   rows:[
+    {head:"Petrobras, 2014 accounts"},
+    {name:"Losses from embezzlement recognized",icon:"iso-cedula-real",n:12.4,value:"R$6.2 bn",color:"var(--b)"},
+    {head:"Odebrecht, 2016 agreement"},
+    {name:"Bribes paid in several countries",icon:"iso-cedula-dolar",n:3.15,value:"US$788 M",color:"var(--b)"},
+    {name:"Fines, with Braskem",icon:"iso-cedula-dolar",n:14,value:"US$3.5 bn",color:"var(--d)"}],
+   key:[{icon:"iso-cedula-real",text:"R$500 million",color:"var(--b)"},{icon:"iso-cedula-dolar",text:"US$250 million",color:"var(--b)"}],
+   text:"The Odebrecht confession still stands. It does not, by itself, say Lula received bribes.",
+   src:[["Congresso em Foco: Petrobras","https://www.congressoemfoco.com.br/noticias/petrobras-perde-r-62-bilhoes-com-corrupcao/"],["US Department of Justice","https://www.justice.gov/opa/pr/odebrecht-and-braskem-plead-guilty-and-agree-pay-least-35-billion-global-penalties-resolve"]]},
+  {type:"iso",span:"s6",label:"Politicians investigated and convicted",title:"Several parties in the scheme; the PT in the mensalão",size:20,
+   rows:[
+    {head:"1st Car Wash list at the Supreme Court, 2015: 47 names"},
+    {name:"PP",icon:"iso-pessoa",n:32,value:"32",color:"var(--d)"},
+    {name:"PMDB",icon:"iso-pessoa",n:7,value:"7",color:"var(--d)"},
+    {name:"PT",icon:"iso-pessoa",n:6,value:"6",color:"var(--d)"},
+    {name:"Other names",icon:"iso-pessoa",n:2,value:"2",color:"var(--d)"},
+    {head:"Mensalão, Supreme Court, 2012"},
+    {name:"PT leadership convicted: Dirceu, Genoino, Delúbio",icon:"iso-pessoa",n:3,value:"3",color:"var(--b)"}],
+   key:[{icon:"iso-pessoa",text:"1 politician investigated"},{icon:"iso-pessoa",text:"1 convicted",color:"var(--b)"}],
+   text:"Lula was not charged in the mensalão. Being on the list means being investigated, not convicted.",
+   src:[["Congresso em Foco: 2015 list","https://www.congressoemfoco.com.br/noticia/48544/quase-metade-do-pp-sera-investigado-veja-a-distribuicao-por-partido"],["Congresso em Foco: mensalão","https://www.congressoemfoco.com.br/noticia/67766/stf-dirceu-genoino-e-delubio-condenados-por-corrupcao"]]},
+  {type:"flow",span:"s6",label:"From Curitiba to the presidential palace",title:"From prison to inauguration",
+   steps:[
+    {icon:"iso-martelo",name:"Moro convicts",sub:"Jul 12, 2017"},
+    {icon:"iso-cadeado",name:"Jailed at the Federal Police",sub:"Apr 7, 2018"},
+    {icon:"iso-relogio",name:"Released",sub:"Nov 8, 2019, after 580 days"},
+    {icon:"iso-x",name:"Supreme Court annuls",sub:"Mar 8, 2021",hot:true},
+    {icon:"iso-governo",name:"Inauguration",sub:"Jan 1, 2023"}],
+   text:"Restarted in Brasília, the triplex case was time-barred and the farm charges were rejected.",
+   src:[["Poder360","https://www.poder360.com.br/governo/da-prisao-ao-planalto-lula-era-preso-ha-exatos-5-anos"],["CNN Brasil","https://www.cnnbrasil.com.br/politica/fatos-primeiro-livre-para-disputar-a-eleicao-lula-nao-foi-inocentado-de-todas-as-acusacoes/"]]},
+  {type:"iso",span:"s6",label:"Where the proof ends",title:"What is proven and what no ruling has stated",size:30,
+   rows:[
+    {name:"Proven",icon:"iso-check",n:5,value:"5 points",color:"var(--ok)"},
+    {name:"No ruling has stated",icon:"iso-x",n:3,value:"3 points",color:"var(--b)"}],
+   key:[{icon:"iso-check",text:"1 proven point",color:"var(--ok)"},{icon:"iso-x",text:"1 point no ruling has stated",color:"var(--b)"}],
+   text:"Proven: convictions annulled; Moro biased; the corruption at Petrobras existed. No ruling has stated: that Lula proved innocence on the merits, that the evidence was forged or that he received bribes.",
+   src:[["Full page: where the proof ends","index.html#h-against"]]},
+  {type:"verdicts",span:"s12",label:"Is it true?",
+   items:[["u","“Lula is the country's biggest thief.”"],["u","“Lula stole the people's money.”"],["m","“The PT is to blame for the corruption at Petrobras.”"],["m","“Lula was acquitted in every case.”"],["m","“Lula is an ex-convict convicted at three levels of court.”"],["f","“The UN acquitted Lula.”"],["m","“They never found the money in Lula's account.”"],["m","“The evidence against Lula was forged.”"],["m","“Car Wash was just a set-up against Lula.”"],["m","“The convictions fell on a technicality, but he is guilty.”"],["f","“Palocci's plea deal proved everything.”"]],
+   src:[["Full page: Is it true?","index.html#h-myth"]]}
+ ]};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://fcarvalhodev.github.io/rotas/visual/icons.js"></script>
+<script src="https://fcarvalhodev.github.io/rotas/visual/visual.js"></script>
+</body></html>
